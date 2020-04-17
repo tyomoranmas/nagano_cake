@@ -6,10 +6,10 @@ class EndUsers::CartItemsController < ApplicationController
 		
 	end
 	def destroy
-		
+		cart_item = Cart_item.destroy
 	end
 	def destroy_all
-		
+		cart_items = Cart_item.destroy_all
 	end
 	def create
 		

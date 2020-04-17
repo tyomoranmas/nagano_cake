@@ -1,10 +1,10 @@
 class EndUsers::ProductsController < ApplicationController
 	def top
-		@products = Product.all
+		@products = Product.select('id').limit(4)
 		@genre = Genre.all
 	end
 	def index
-		@products = Product.all
+		@products = Product.page(params[:page]).reverse_order
 	end
 	def show
 		@products = Product.find(params[:id])

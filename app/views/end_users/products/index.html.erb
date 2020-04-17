@@ -7,3 +7,4 @@
 			<%=product.tax_excluded_price%>
 			<%= attachment_image_tag(product, :image,:fill, 50,50, fallback:"")%>
 		<% end %>
+		<%= paginate @products%>

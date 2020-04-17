@@ -1,5 +1,11 @@
 <%= render 'end_users/products/genre_search'%>
 
+<h2>オススメ商品</h2>
+	<% @products.each do |product|%>
+			<%=product.name%>
+			<%=product.tax_excluded_price%>
+			<%= attachment_image_tag(product, :image,:fill, 50,50, fallback:"")%>
+		<% end %>
 	①
 	<%=@products.name%>
 	②
