@@ -68,5 +68,5 @@ gem "refile-mini_magick"
 gem "kaminari"
 gem "kaminari-bootstrap"
 gem 'jquery-rails'
-gem "bootstrap"
+gem "bootstrap-sass"
 gem "aasm"

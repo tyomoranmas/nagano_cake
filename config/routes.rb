@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :end_users
+  devise_for :end_users, :controllers => {
+    :registrations => 'end_users/registrations',
+    :sessions => 'end_users/sessions',
+    :passwords => 'end_users/passwords'
+  }
   devise_for :admins
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
