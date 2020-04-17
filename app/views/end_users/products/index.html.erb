@@ -1,0 +1,9 @@
+
+<%= render 'end_users/products/genre_search'%>
+	<h2>商品一覧</h2><h3>(全<%=@products.count%>件)</h3>
+	
+		<% @products.each do |product|%>
+			<%=product.name%>
+			<%=product.tax_excluded_price%>
+			<%= attachment_image_tag(product, :image,:fill, 50,50, fallback:"")%>
+		<% end %>
