@@ -6,8 +6,8 @@
 		</div>
 		<div class ="panel-body">
 			<%@genres.each do |genre|%>(local: true, method: :get)
-				<%=link_to do%>
-					<%=genre.name"genre"%>
+				<%=link_to　products_path(genre.id) do%>
+					<%=link_to (genre.name),genre_path(genre.id) %>
 				<%end%>
 			<% end %>
 

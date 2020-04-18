@@ -1,26 +1,29 @@
 <div class="container" style="padding-top: 10px;">
 	<div class="row">
 		<%= render 'end_users/products/genre_search'%>
+		
 				<div class="col-xs-9">
 					<h2><strong>商品一覧</strong><small>(全<%=@products.count%>件)</small></h2>
-					
 					<% @products.each do |product|%>
-					<%=product.name%>
-					<%=product.tax_excluded_price%>
-					<%=link_to end_users_product(product.id)do%>
-					<%= attachment_image_tag(product, :image,:fill, 50,50, fallback:"")%>
+						<%=product.name%>
+						<%=product.tax_excluded_price%>
+						<%=link_to end_users_product(product.id)do%>
+							<%= attachment_image_tag(product, :image,:fill, 50,50, fallback:"")%>
+						<% end %>
 					<% end %>
-		<% end %>
-		<%= paginate @products%>
+					<%= paginate @products%>
+				</div>
+			
+				<div>
+					<h2><strong><%=@genres.name%>一覧</strong><small>(全<%=@products.count%>件)</small></h2>
+					<% @products.each do |product|%>
+						<%=product.name%>
+						<%=product.tax_excluded_price%>
+						<%=link_to end_users_product(product.id)do%>
+							<%= attachment_image_tag(product, :image,:fill, 50,50, fallback:"")%>
+						<% end %>
+					<%end%>
+				<%= paginate @products%>
+				</div>
 	</div>
-
-	<h2><strong><%=@genres.name%>一覧</strong><small>(全<%=@products.count%>件)</small></h2>
-		<% @products.each do |product|%>
-			<%=product.name%>
-			<%=product.tax_excluded_price%>
-			<%=link_to end_users_product(product.id)do%>
-			<%= attachment_image_tag(product, :image,:fill, 50,50, fallback:"")%>
-			<% end %>
-		<%end%>
-			<%= paginate @products%>
 </div>

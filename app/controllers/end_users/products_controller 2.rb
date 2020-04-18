@@ -4,12 +4,12 @@ class EndUsers::ProductsController < ApplicationController
 		@genres = Genre.all
 	end
 	def index
+		
 		@products = Product.page(params[:page]).reverse_order
-		@genres = Genre.page(params[:page]).reverse_order
+		@products = @genre.product.page(params[:page]).reverse_order
 		@genres = Genre.all
 	end
 	def show
-		@genres = Genre.all
 		@products = Product.find(params[:id])
 	end
 	private

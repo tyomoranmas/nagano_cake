@@ -1,0 +1,12 @@
+<%= render 'end_users/products/genre_search'%>
+
+<%=product.name%>
+<%=product.introduction%>
+<%=product.tax_excluded_price%>
+<%= attachment_image_tag(product, :image,:fill, 50,50, fallback:"")%>
+
+<!-- 個数選択・カートに入れる -->
+<%=form_tag do%>
+<%=select%>
+<%=submit%>
+	<%end%>
