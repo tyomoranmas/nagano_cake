@@ -1,23 +1,32 @@
-<!-- eachメソッドを実装？ -->
-<div class="container">
-	<div claas="col-xs-3">
-<h2>ジャンル検索</h2>
-<table>
-	<tbody>
 
-		<tr>
-			<td>ケーキ</td>
-		</tr>
-		<tr>
-			<td>焼き菓子</td>
-		</tr>
-		<tr>
-			<td>プリン</td>
-		</tr>
-		<tr>
-			<td>キャンディ</td>
-		</tr>
-	</tbody>
-</table>
+<div class="col-xs-3">
+	<div class = "panel panel-default">
+		<div class = "panel-heading">
+			<h4 class="text-center"><strong>ジャンル検索</strong></h4>
+		</div>
+		<div class ="panel-body">
+			<%@genres.each do |genre|%>(local: true, method: :get)
+				<%=link_to do%>
+					<%=genre.name"genre"%>
+				<%end%>
+			<% end %>
+
+			<table style="margin:0 auto;">
+				<tbody>
+					<tr>
+						<td>ケーキ</td>
+					</tr>
+					<tr>
+						<td>焼き菓子</td>
+					</tr>
+					<tr>
+						<td>プリン</td>
+					</tr>
+					<tr>
+						<td>キャンディ</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
