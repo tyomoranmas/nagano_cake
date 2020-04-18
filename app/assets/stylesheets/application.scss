@@ -15,15 +15,45 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+// ボタンのレイアウト
+.leave-link {
+  text-align: center;
+}
 .btn-danger {
   a {
     color: #fff;
   }
 }
+.index-btn {
+  margin-top: 12px;
+}
+.edit-btn {
+  margin: 12px 10px 0 0;
+}
+.pass-btn {
+  margin-top: 12px;
+}
+.leave-btn {
+  margin-left: 20px;
+}
 
-// end_users
-h3 {
+h1 {
+  font-size: 30px;
   padding-bottom: 10px;
+}
+
+h2 {
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+.leave-confirm {
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 100px;
+}
+.leave-text {
+  text-align: center;
 }
 
 // form layout
@@ -72,4 +102,8 @@ h3 {
 //エラーによるレイアウトが崩れるのを防ぐ
 .field_with_errors {
   display: contents;
+}
+
+.my-page {
+  width: 30%;
 }
