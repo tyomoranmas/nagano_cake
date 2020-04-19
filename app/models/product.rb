@@ -1,7 +1,5 @@
 class Product < ApplicationRecord
 	attachment :image
 	belongs_to :genre
-	def self.search(search)
-		
-	end
+	has_many :order_products
 end

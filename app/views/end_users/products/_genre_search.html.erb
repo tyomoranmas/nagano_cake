@@ -5,28 +5,20 @@
 			<h4 class="text-center"><strong>ジャンル検索</strong></h4>
 		</div>
 		<div class ="panel-body">
-			<%@genres.each do |genre|%>(local: true, method: :get)
-				<%=link_to　products_path(genre.id) do%>
-					<%=link_to (genre.name),genre_path(genre.id) %>
-				<%end%>
-			<% end %>
-
+			<%@genres.each do |genre|%>
 			<table style="margin:0 auto;">
 				<tbody>
 					<tr>
-						<td>ケーキ</td>
-					</tr>
-					<tr>
-						<td>焼き菓子</td>
-					</tr>
-					<tr>
-						<td>プリン</td>
-					</tr>
-					<tr>
-						<td>キャンディ</td>
+						
+						<td><%= link_to genre.name,{controller: 'end_users/products', action: 'index', id: genre.id}%></td>
+						
 					</tr>
 				</tbody>
 			</table>
+					
+			<% end %>
+
+			
 		</div>
 	</div>
 </div>
