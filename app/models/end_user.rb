@@ -9,4 +9,6 @@ class EndUser < ApplicationRecord
     format: {with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力してください。'}
   validates :post_code, format: { with: /\A\d{7}\z/ }
   validates :phone_number, format: { with: /\A\d{10,11}\z/ }
+
+  has_many :ship_addresses, dependent: :destroy
 end

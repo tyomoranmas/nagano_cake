@@ -7,11 +7,11 @@
   <table class="table table-bordered">
     <tr>
       <th class="my-page">氏名</th>
-      <td><%= @end_user.last_name %><%= @end_user.first_name %></td>
+      <td><%= @end_user.last_name %>　<%= @end_user.first_name %></td>
     </tr>
     <tr>
       <th>カナ</th>
-      <td><%= @end_user.last_name_kana %><%= @end_user.first_name_kana %></td>
+      <td><%= @end_user.last_name_kana %>　<%= @end_user.first_name_kana %></td>
     </tr>
     <tr>
       <th>郵便番号</th>
@@ -34,7 +34,7 @@
 
 <div class="row">
   <h2 class="col-xs-2">配送先</h2>
-  <%= link_to "一覧を見る", root_path, class: "btn btn-primary col-xs-2 index-btn" %>
+  <%= link_to "一覧を見る", end_users_ship_addresses_path(@end_user), class: "btn btn-primary col-xs-2 index-btn" %>
 </div>
 
 <div class="row">
