@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     patch :delete
     get :leave
   end
+
+  namespace :end_users do
+    resources :ship_addresses, only: [:index, :edit, :update, :destroy, :create]
+  end
   get 'admins' => 'admins#top', as: 'top_admin'
 
   root 'end_users/products#top'

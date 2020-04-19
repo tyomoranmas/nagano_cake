@@ -1,2 +1,0 @@
-class ShipAddressesController < ApplicationController
-end
