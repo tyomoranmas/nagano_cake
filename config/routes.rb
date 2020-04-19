@@ -14,10 +14,15 @@ Rails.application.routes.draw do
   end
 
   namespace :end_users do
+
   	resources :products, only: [:index,:show]
   	resources :cart_items, only: [:index,:update,:destroy,:create]
   end
   resource :end_user, only: [:edit, :show, :update]
+
+
+    resources :ship_addresses, only: [:index, :edit, :update, :destroy, :create]
+  end
 
   get 'admins' => 'admins#top', as: 'top_admin'
 

@@ -1,4 +1,5 @@
 class EndUsersController < ApplicationController
+  before_action :authenticate_end_user!
   before_action :set_current_end_user
   def show
   end
@@ -27,9 +28,5 @@ class EndUsersController < ApplicationController
     def end_user_params
       params.require(:end_user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana,
               :email, :post_code, :address, :phone_number, :is_deleted)
-    end
-
-    def set_current_end_user
-      @end_user = current_end_user
     end
 end

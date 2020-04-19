@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
       new_end_user_session_path
     end
 
+    def set_current_end_user
+      @end_user = current_end_user
+    end
+
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana,
