@@ -1,3 +1,4 @@
 class OrderProduct < ApplicationRecord
-	belons_to :admin
+	belongs_to :product
+	belongs_to :order
 end

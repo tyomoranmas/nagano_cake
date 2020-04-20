@@ -1,5 +1,6 @@
 class EndUsers::ShipAddressesController < ApplicationController
   before_action :set_current_end_user
+
   def index
     @ship_address = ShipAddress.new
     @ship_addresses = @end_user.ship_addresses
@@ -7,7 +8,7 @@ class EndUsers::ShipAddressesController < ApplicationController
 
   def create
     @ship_address = ShipAddress.new(ship_address_params)
-    @ship_address.end_user_id = current_end_user.id
+    @ship_address.end_user_id = @end_user.id
     if @ship_address.save
       redirect_to end_users_ship_addresses_path
     else
