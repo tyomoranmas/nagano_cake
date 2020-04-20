@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   }
   devise_for :admins
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'end_users/orders/confirm' => 'end_users/orders#confirm', as: 'end_users_confirm_order'
+  get 'end_users/orders/finish' => 'end_users/orders#finish', as: 'end_users_finish_order'
 
+  get 'admins' => 'admins#top', as: 'top_admin'
 
   resource :end_user, only: [:edit, :show, :update] do
     patch :delete
@@ -22,9 +25,8 @@ Rails.application.routes.draw do
 
 
     resources :ship_addresses, only: [:index, :edit, :update, :destroy, :create]
+    resources :orders, only: [:index, :new, :show, :create]
   end
-
-  get 'admins' => 'admins#top', as: 'top_admin'
 
   root 'end_users/products#top'
 end
