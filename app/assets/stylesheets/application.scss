@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.form-submit {
+  padding-top: 100px;
+}
+
+.add-product {
+  margin: 0 20px;
+}
+
+.table {
+  table-layout: auto;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+

@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   resource :end_user, only: [:edit, :show, :update]
   get 'admins' => 'admins#top', as: 'top_admin'
-
-  root 'end_users/products#top'
+  namespace :admins do
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :products, only: [:index, :new, :edit, :show, :create, :update, :destroy]
+  end
+  #root 'end_users/products#top'
 end
