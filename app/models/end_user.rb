@@ -12,4 +12,5 @@ class EndUser < ApplicationRecord
 
   has_many :ship_addresses, dependent: :destroy
   has_many :order, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
 end

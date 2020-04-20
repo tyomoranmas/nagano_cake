@@ -1,0 +1,24 @@
+
+<div class="col-xs-3">
+	<div class = "panel panel-default">
+		<div class = "panel-heading">
+			<h4 class="text-center"><strong>ジャンル検索</strong></h4>
+		</div>
+		<div class ="panel-body">
+			<%@genres.each do |genre|%>
+			<table style="margin:0 auto;">
+				<tbody>
+					<tr>
+
+						<td><%= link_to genre.name,{controller: 'end_users/products', action: 'index', id: genre.id}%></td>
+
+					</tr>
+				</tbody>
+			</table>
+
+			<% end %>
+
+
+		</div>
+	</div>
+</div>
