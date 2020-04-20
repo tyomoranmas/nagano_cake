@@ -11,4 +11,5 @@ class EndUser < ApplicationRecord
   validates :phone_number, format: { with: /\A\d{10,11}\z/ }
 
   has_many :ship_addresses, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
 end

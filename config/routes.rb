@@ -16,9 +16,9 @@ Rails.application.routes.draw do
   namespace :end_users do
 
   	resources :products, only: [:index,:show]
-  	resources :cart_items, only: [:index,:update,:destroy,:create]
+  	resources :cart_items, only: [:index,:update,:destroy,:create] 
   end
-  resource :end_user, only: [:edit, :show, :update]
+  resource :end_user, only: [:edit, :show, :update] do
 
 
     resources :ship_addresses, only: [:index, :edit, :update, :destroy, :create]
