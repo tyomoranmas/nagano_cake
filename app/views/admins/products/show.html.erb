@@ -1,0 +1,37 @@
+<div class='row'>
+  <h1>商品 詳細画面</h1>
+
+  <div class="col-lg-4 form-image">
+    <%= attachment_image_tag @product, :image, :fill, 400, 400, fallback: "no_image.jpg" %>
+  </div>
+  <div class="col-lg-5 form-group">
+    <table class="table">
+      <%= form_for [:admins, @product] do |f| %>
+      <tr>
+        <td><%= f.label :name, "商品名" %></td>
+        <td><%= @product.name %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :introduction, "商品説明" %></td>
+        <td><%= @product.introduction %><td>
+      </tr>
+      <tr>
+        <td><%= f.label :genre, "ジャンル" %></td>
+        <td><%= @product.genre.name %><td>
+      </tr>
+      <tr>
+        <td><%= f.label :tax_excluded_price, "税込価格（税抜価格）" %></td>
+        <td><%= (BigDecimal(@product.tax_excluded_price) * BigDecimal("1.1")).floor %>（<%= @product.tax_excluded_price %>）円</td>
+      </tr>
+      <tr>
+        <td><%= f.label :is_stopped, "販売ステータス" %></td>
+        <td><%= @product.is_stopped %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="col-lg-3">
+    <%= link_to '編集する', edit_admins_product_path(@product.id), class: "btn-sm btn-primary" %>
+    <%= link_to '削除する', admins_product_path(@product),  method: :delete, data: { confirm: '本当にこの商品を消しますか？' }, class: "btn-sm btn-danger" %>
+  </div>
+</div>
