@@ -1,0 +1,8 @@
+<ul class="users">
+<%= form_for(@end_users) do |users| %>
+<li>
+<%= link_to users.name %>
+<%= link_to users.email %>
+</li>
+<%end%>
+</ul>

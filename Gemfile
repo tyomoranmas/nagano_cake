@@ -68,5 +68,8 @@ gem "refile-mini_magick"
 gem "kaminari"
 gem "kaminari-bootstrap"
 gem 'jquery-rails'
-gem "bootstrap"
+gem 'bootstrap-sass', '~> 3.3.6'
 gem "aasm"
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'

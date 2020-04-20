@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-xs-1"></div>
+	<div class="col-xs-11">
+		<div class="admin-title">
+			<h1>管理者画面</h1>
+
+			<div class="oder-box">
+				<% @end_users.each do |oder| %>
+				<font size="5">
+					本日の注文件数　　<%= link_to oder.status.count, admins_orders_path %>件
+				</font>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+
