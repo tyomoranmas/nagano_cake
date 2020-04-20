@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update]
     resources :products, only: [:index, :new, :edit, :show, :create, :update, :destroy]
   end
+  root 'end_users/products#top'
 end
