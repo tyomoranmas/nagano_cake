@@ -10,10 +10,12 @@
     <% if @minimum_password_length %>
     <em class="password">(<%= @minimum_password_length %> 文字以上)</em>
     <% end %>
+
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
+
     <%= f.label :パスワード（確認用）, class: "password-confirmation" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
