@@ -1,7 +1,7 @@
 class Admins::EndUsersController < ApplicationController
  def index
   	@end_users = EndUser.all
-    @end_users = Enduser.paginate(page: params[:page])
+    #@end_users = Enduser.paginate(page: params[:page])
  end
 
  def show
@@ -17,7 +17,7 @@ class Admins::EndUsersController < ApplicationController
 
  end
   private
-    def end_user_params
-      params.require(:end_user).permit()
+    def admin_params
+      params.require(:admin).permit(:id, :email, :encrypted_password)
     end
 end
