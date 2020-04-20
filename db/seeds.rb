@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+CartItem.create!(product_id: 2,
+				end_user_id: 2,
+				quantity: 5,)
+
