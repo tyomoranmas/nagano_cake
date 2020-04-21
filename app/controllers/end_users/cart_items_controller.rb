@@ -1,13 +1,18 @@
 class EndUsers::CartItemsController < ApplicationController
 	def index
-		@end_user  = current_end_user
-		@cart_items = @end_user.cart_items
-		@cart_item = CartItem.new
+			@end_user  = current_end_user
+			@cart_items = @end_user.cart_items
+			@cart_item = CartItem.new
+	end
+	def show
+			@end_user  = current_end_user
+			@cart_items = @end_user.cart_items
+			@cart_item = CartItem.new
 	end
 	def update
-		@cart_item = CartItem.find(params[:id])
-		@cart_item.update(cart_item_params)
-		redirect_to end_users_cart_items_path
+			@cart_item = CartItem.find(params[:id])
+			@cart_item.update(cart_item_params)
+			redirect_to end_users_cart_items_path
 
 	end
 	def destroy
