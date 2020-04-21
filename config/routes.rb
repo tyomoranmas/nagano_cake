@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :end_users do
+    get 'genres/show'
+  end
   devise_for :end_users, controllers: {
     sessions: 'end_users/sessions',
     passwords: 'end_users/passwords',
@@ -17,6 +20,7 @@ Rails.application.routes.draw do
   get 'end_users/orders/finish' => 'end_users/orders#finish', as: 'end_users_finish_order'
 
   get 'admins' => 'admins#top', as: 'top_admin'
+  delete '/end_users/cart_items' => 'end_users/cart_items#destroy_all', as:'destroy_all'
 
   resource :end_user, only: [:edit, :show, :update] do
     patch :delete
@@ -25,7 +29,8 @@ Rails.application.routes.draw do
 
   namespace :end_users do
     resources :products, only: [:index, :show]
-    resources :cart_items, only: [:index, :update, :destroy, :create]
+    resources :genres, only: [:show]
+    resources :cart_items, only: [:index,:show, :update, :destroy, :create]
     resources :ship_addresses, only: [:index, :edit, :update, :destroy, :create]
     resources :orders, only: [:index, :new, :show, :create]
   end
@@ -38,5 +43,5 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :edit, :show, :create, :update, :destroy]
   end
 
-  root 'end_users/products#top'
+  root 'products#top'
 end

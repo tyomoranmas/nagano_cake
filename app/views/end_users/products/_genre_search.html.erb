@@ -10,7 +10,7 @@
 				<tbody>
 					<tr>
 
-						<td><%= link_to genre.name,{controller: 'end_users/products', action: 'index', id: genre.id}%></td>
+						<td><%= link_to genre.name,end_users_genre_path(genre.id)%></td>
 
 					</tr>
 				</tbody>
