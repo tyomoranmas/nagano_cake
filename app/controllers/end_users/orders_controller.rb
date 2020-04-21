@@ -16,6 +16,7 @@ class EndUsers::OrdersController < ApplicationController
 
   def index
     @orders = @end_user.orders
+    # @order_products = @orders.order_products
   end
 
   def show

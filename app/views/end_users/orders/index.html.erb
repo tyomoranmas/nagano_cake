@@ -1,1 +1,24 @@
 <h1>注文履歴一覧</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>注文商品</th>
+      <th>支払金額</th>
+      <th>ステータス</th>
+      <th>注文詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2000/5/2</td>
+      <td>1234567 東京都渋谷区神南一丁目19-11 パークスクエア2 4階 大森康</td>
+      <td>いちごのショートケーキ</td>
+      <td>2,300</td>
+      <td>入金確認</td>
+      <td><%= link_to "表示する", root_path, class: "btn btn-primary"%></td>
+    </tr>
+  </tbody>
+</table>

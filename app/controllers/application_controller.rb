@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
       root_path(resource)
     end
 
-
     def after_sign_out_path_for(resource)
       new_end_user_session_path
     end
@@ -25,4 +24,3 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:sign_in, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana])
     end
 end
-
