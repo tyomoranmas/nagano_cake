@@ -11,18 +11,15 @@ class EndUsers::CartItemsController < ApplicationController
 
 	end
 	def destroy
-		if 	
 			@cart_item = CartItem.find(params[:id])
 			@cart_item.destroy
 			redirect_to end_users_cart_items_path
-		elsif @end_user  = current_end_user
-			@cart_items = @end_user.cart_items
-			@cart_items.destroy_all
-			redirect_to end_users_cart_items_path
-		end
 	end
 	def destroy_all
-
+		@end_user  = current_end_user
+		@cart_items = @end_user.cart_items
+		@cart_items.destroy_all
+		redirect_to end_users_cart_items_path
 	end
 	def create
 		@cart_item = CartItem.new(cart_item_params)
