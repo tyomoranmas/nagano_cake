@@ -21,6 +21,7 @@
     </table>
   </div>
 
+  <%= form_for [:end_users, @order] do |f| %>
   <div class="col-xs-4">
     <table class="table table-bordered">
       <tr>
@@ -37,11 +38,22 @@
       </tr>
     </table>
   </div>
+
   <div class="row">
     <label>支払方法</label> クレジットカード
+    <%= f.hidden_field :payment, value: @order.payment %>
+    <%= @order.payment %>
   </div>
+
   <div class="row">
     <label>お届け先</label> 150041 東京都渋谷区神南1丁目19ー11 パークウェースクエア2 4階
     山田花子
+    <%= f.hidden_field :post_code, value: @order.post_code %>
+    <%= f.hidden_field :address, value: @order.address %>
+    <%= f.hidden_field :address_name, value: @order.address_name %>
+
+    <%= f.hidden_field :total, value: @order.total %>
   </div>
+  <%= f.submit "購入を確定する", class: "btn btn-success" %>
+  <% end %>
 </div>

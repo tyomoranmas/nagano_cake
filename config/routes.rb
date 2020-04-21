@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get 'end_users/orders/confirm' => 'end_users/orders#confirm', as: 'end_users_confirm_order'
+  post 'end_users/orders/confirm' => 'end_users/orders#confirm', as: 'end_users_confirm_order'
   get 'end_users/orders/finish' => 'end_users/orders#finish', as: 'end_users_finish_order'
 
   get 'admins' => 'admins#top', as: 'top_admin'
