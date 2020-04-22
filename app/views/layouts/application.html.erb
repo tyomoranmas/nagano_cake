@@ -18,64 +18,15 @@
         <% end %>
       </div>
     </nav>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <% if %w[/ /end_users/sign_up].any? { |name| current_page?("#{name}") }  %><!--end_userログイン前表示-->
-          <li>
-            <%=link_to '商品一覧', end_users_products_path, class: "glyphicon glyphicon-cutlery" %>
-          </li>
-          <li>
-            <%=link_to '新規登録', root_path, class: "glyphicon glyphicon-edit" %>
-          </li>
-          <li>
-            <%= link_to "ログイン", root_path, class: "glyphicon glyphicon-log-in sign_in" %>
-          </li>
-
-        <% elsif admin_signed_in? %><!--Adminログイン後表示-->
-          <li>
-            <%=link_to '商品一覧', admins_products_path,  class: "glyphicon glyphicon-cutlery" %>
-          </li>
-          <li>
-            <%=link_to '会員一覧', admins_end_users_path,  class: "glyphicon glyphicon-sort-by-attributes" %>
-          </li>
-          <li>
-            <%=link_to '注文履歴一覧', admins_orders_path,  class: "glyphicon glyphicon-cutlery" %>
-          </li>
-          <li>
-            <%=link_to 'ジャンル管理', admins_genres_path,  class: "glyphicon glyphicon-cutlery" %>
-          </li>
-          <li>
-            <!--検索フォーム-->
-          </li>
-
-        <% elsif end_user_signed_in? %><!--end_userログイン後表示-->
-          <li>
-            <%= link_to 'マイページ', end_user_path(current_user.id), class: "glyphicon glyphicon-user" %></li>
-          <li>
-            <%=link_to '商品一覧', end_user_products_path,  class: "glyphicon glyphicon-cutlery" %>
-          </li>
-          <li>
-            <%=link_to 'カート', books_path, class: "glyphicon glyphicon-shopping-cart" %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_end_user_session_path, class: "glyphicon glyphicon-log-out logout", method: :delete %>
-          </li>
-        <% end %>
-
-      </ul>
-    </nav>
+    <%= render 'layouts/header'  %>
   </header>
 
   <div class="container" style="margin-top: 150px;">
     <%= yield %>
   </div>
 
-  <footer>
-    <% if current_end_user %><!--if カレントユーザーがadminでないとき-->
-      <div class="col-xs-3 col-xs-offset-1">
-        <p>CopyRight ちょもらんま.inc</p>
-      </div>
-    <% end %>
+  <footer class="p-5 mt-5">
+    <%= render 'layouts/footer' %>
   </footer>
 </body>
 
