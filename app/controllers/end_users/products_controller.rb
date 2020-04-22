@@ -6,8 +6,6 @@ class EndUsers::ProductsController < ApplicationController
 	def index
 		@products = Product.page(params[:page]).reverse_order
 		@products2 = Product.all
-		@genre = Genre.find(params[:id])
-		@products = @genre.products.page(params[:page]).reverse_order
 		@genres = Genre.all
 	end
 	def show
