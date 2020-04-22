@@ -18,11 +18,11 @@
 				</thead>
 
 				<tbody>
-					<% @orders.each do |order| %>
+					<%= form_for(@orders, url: '/admins/orders' ) do |order| %>
 						<tr>
 							<td><%= link_to order.id, admin_oder_path(end_user.id) %></td>
 							<td><%= order.name %></td>
-							<td><%= oder.status.coun %></td>
+							<td><%= oder.status.count %></td>
 							<td><%= order.status %></td>
 						</tr>
 					<% end %>

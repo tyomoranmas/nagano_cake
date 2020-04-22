@@ -24,15 +24,10 @@ Rails.application.routes.draw do
   end
 
   namespace :end_users do
-
-  	resources :products, only: [:index,:show]
-  	resources :cart_items, only: [:index,:update,:destroy,:create] 
-  end
-  resource :end_user, only: [:edit, :show, :update] do
-
-
     resources :ship_addresses, only: [:index, :edit, :update, :destroy, :create]
     resources :orders, only: [:index, :new, :show, :create]
+  	resources :products, only: [:index,:show]
+  	resources :cart_items, only: [:index,:update,:destroy,:create]
   end
 
   namespace :admins do
@@ -41,6 +36,6 @@ Rails.application.routes.draw do
   resources :genres, only: [:index, :edit, :create, :update]
   resources :products, only: [:index, :new, :edit, :show, :create, :update, :destroy]
   end
-  
+
   root 'end_users/products#top'
 end
