@@ -1,0 +1,56 @@
+<header class="navbar navbar-fixed-top navbar-inverse" style="background-color:#000000;">
+  <nav class="nav navbar-nav navbar-left">
+    <div class="logo">
+      <%= link_to root_path do %>
+      <%= image_tag 'logo_black-2.jpg', :size => '280x60' %>
+      <% end %>
+    </div>
+  </nav>
+  <nav>
+    <% if end_user_signed_in? %><!--end_userログイン後表示-->
+      <ul class="nav navbar-nav navbar-right" style="margin: 25px 10px 0px 0px; font-size: 20px;">
+        <li>
+          <%= link_to 'マイページ', end_user_path, class: "glyphicon glyphicon-user" %></li>
+        <li>
+          <%=link_to '商品一覧', end_users_products_path,  class: "glyphicon glyphicon-cutlery" %>
+        </li>
+        <li>
+          <%=link_to 'カート', end_users_cart_items_path, class: "glyphicon glyphicon-shopping-cart" %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", destroy_end_user_session_path, class: "glyphicon glyphicon-log-out logout", method: :delete %>
+        </li>
+      </ul>
+    <% elsif admin_signed_in? %><!--Adminログイン後表示-->
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%=link_to '商品一覧', admins_products_path %>
+        </li>
+        <li>
+          <%=link_to '会員一覧', admins_end_users_path %>
+        </li>
+        <li>
+          <%=link_to '注文履歴一覧', admins_orders_path %>
+        </li>
+        <li>
+          <%=link_to 'ジャンル管理', admins_genres_path %>
+        </li>
+        <form action="" method="get">
+          <input id="sbox1" id="s" name="s" type="text" placeholder="検索 …" />
+        </form>
+      </ul>
+    <% elsif %w[/ /end_users/sign_up /end_users/sign_in].any? { |name| current_page?("#{name}") }  %><!--end_userログイン前表示-->
+      <ul  class="nav navbar-nav navbar-right" style="margin: 25px 10px 0px 0px; font-size: 20px;">
+        <li>
+          <%=link_to '商品一覧', end_users_products_path, class: "glyphicon glyphicon-cutlery" %>
+        </li>
+        <li>
+          <%=link_to '新規登録', new_end_user_registration_path, class: "glyphicon glyphicon-edit" %>
+        </li>
+        <li>
+          <%= link_to "ログイン", end_user_session_path, class: "glyphicon glyphicon-log-in sign_in" %>
+        </li>
+      </ul>
+    <% end %>
+  </nav>
+</header>

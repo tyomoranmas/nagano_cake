@@ -2,11 +2,11 @@
   <h1>商品　新規登録画面</h1>
 
   <%= form_for [:admins, @product] do |f| %>
-    <div class="col-lg-4 form-image">
+    <div class="col-xs-4">
       <%= image_tag "no_image.png", :size =>'350x230' %>
       <%= f.attachment_field :image %>
     </div>
-    <div class="col-lg-4 form-group">
+    <div class="col-xs-4 col-xs-offset-1 form-group">
       <table class="table">
         <tr>
           <td><%= f.label :name, "商品名" %></td>
@@ -30,7 +30,7 @@
         </tr>
       </table>
     </div>
-    <div class="col-lg-4">
+    <div class="col-xs-2">
       <div class="form-submit">
         <%= f.submit('新規登録', class: 'btn btn-primary') %>
       </div>
