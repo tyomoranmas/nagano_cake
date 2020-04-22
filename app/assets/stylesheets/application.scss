@@ -15,6 +15,9 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.margin-right {
+  margin-right: 10px;
+}
 
 .form-submit {
   padding-top: 100px;
@@ -90,7 +93,7 @@ h2 {
     padding-right: 130px;
   }
   .post_code {
-    padding-right: 60px;
+    padding-right: 41px;
   }
   .address {
     padding-right: 200px;
