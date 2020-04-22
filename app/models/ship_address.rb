@@ -3,4 +3,8 @@ class ShipAddress < ApplicationRecord
   validates :address, :address_name, presence: true
 
   belongs_to :end_user
+
+  def addressee
+	'〒 ' +	post_code + '　' +  address + '　' +  address_name
+	end
 end

@@ -7,7 +7,7 @@
 		</div>
 		<div class="col-xs-6">
 			<div class="menbers-box">
-				<!--%= will_paginate %-->
+
 				<table class='table'>
 
 					<thead>
@@ -23,14 +23,14 @@
 						<% @end_users.each do |f| %>
 						<tr>
 							<td><%= f.id %></td>
-							<td><%= link_to f.name, admin_end_user_path %></td>
+							<td><%= link_to f.last_name,f.first_name admin_end_user_path %></td>
 							<td><%= f.email %></td>
 							<td><%= f.status %></td>
 						</tr>
 						<% end %>
 					</tbody>
 				</table>
-				<!--%= will_paginate %-->
+
 
 			</div>
 		</div>
