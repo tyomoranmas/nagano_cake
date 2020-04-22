@@ -1,14 +1,16 @@
 class Admins::OrdersController < ApplicationController
    def index
-   @orders = Order.all
-   @orders = Order.paginate(page: params[:page])
+    @orders = Order.all
    end
 
    def show
+    @order = Order.find(params[:id])
 
    end
 
    def update
+      order = Order.find(params[:id])
+      order.update(order_params)
       redirect_to admins_order_path(end_user.id)
    end
 

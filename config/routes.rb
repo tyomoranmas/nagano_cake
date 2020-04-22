@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   namespace :end_users do
     resources :products, only: [:index, :show]
     resources :genres, only: [:show]
-    resources :cart_items, only: [:index,:show, :update, :destroy, :create]
+    resources :cart_items, only: [:index, :show, :update, :destroy, :create]
     resources :ship_addresses, only: [:index, :edit, :update, :destroy, :create]
     resources :orders, only: [:index, :new, :show, :create]
   end
