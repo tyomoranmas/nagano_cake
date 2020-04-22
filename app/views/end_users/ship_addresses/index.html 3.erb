@@ -1,0 +1,42 @@
+<div class="row">
+  <h1>配送先登録/一覧</h1>
+  <%= render 'layouts/error_message', model: @ship_address %>
+
+  <%= form_for [:end_users, @ship_address] do |f| %>
+
+  <%= render 'end_users/shared/address_form', f: f %>
+
+  <div class="field">
+    <%= f.label :宛名, class: "address_name" %>
+    <%= f.text_field :address_name, autofocus: true, autocomplete: "address_name" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "登録する", class: "btn btn-success col-xs-2 col-xs-offset-5", style: "margin-bottom: 20px;" %>
+  </div>
+  <% end %>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th style="width: 100px;">郵便番号</th>
+      <th style="width: 300px;">住所</th>
+      <th style="width: 100px;">宛名</th>
+      <th style="width: 200px;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ship_addresses.each do |ship_address| %>
+    <tr>
+      <td><%= ship_address.post_code %></td>
+      <td><%= ship_address.address %></td>
+      <td><%= ship_address.address_name %></td>
+      <td>
+        <%= link_to "編集する", edit_end_users_ship_address_path(ship_address), class: "btn btn-primary" %>
+        <%= link_to "削除する", end_users_ship_address_path(ship_address), method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

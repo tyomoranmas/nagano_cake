@@ -5,7 +5,7 @@
 		<p class= "btn btn-danger col-xs-2 col-xs-offset-10">
 			<%=link_to "カートを空にする",destroy_all_path,class: "btn btn-danger", method: :delete %>
 		</p>
-	<% @sum = 0 %>
+	
 	<table class="table table-bordered">
 		<thead >
 			<tr class="active">
@@ -16,26 +16,9 @@
 				<th></th>
 			</tr>
 		</thead>
-		<%	@cart_items.each do |item|%>
-		<tbody>
-			<tr>
-				<td><%= attachment_image_tag(item.product, :image,:fill, 100,100, fallback:"no_image.png", size:'100x50')%>
-				<%=item.product.name%></td>
-				<td>¥<%= (item.product.tax_excluded_price * 1.10).floor%></td>
-
-
-				<%=form_for [:end_users, item] do |f|%>
-				<td><%= f.select :quantity,[[item.quantity.to_i],
-				['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]]%>個　<%=f.submit"変更"%></td>
-				<%end%>
-
-
-				<td>¥<%= ((item.product.tax_excluded_price)*(item.quantity)* (1.10)).floor%></td>
-				<%@sum += ((item.product.tax_excluded_price)*(item.quantity)* (1.10)).floor%>
-				<td><%= link_to "削除", "/end_users/cart_items/#{item.id}",class: "btn btn-danger", method: :delete%></td>
-				<%end%>
-			</tr>
-		</tbody>
+		<div >
+		<%=render"index", cart_items: @cart_items %>
+	</div>
 	</table>
 		<div class="col-xs-3 col-xs-offset-9">
 		<table class="table table-bordered">
@@ -46,7 +29,10 @@
 			</thead>
 		</table>
 		</div>
-		<div class ="btn btn-success col-xs-3 col-xs-offset-4">
+		<div class="btn btn-primary col-xs-2" >
+			<%=link_to "買い物を続ける","#",onClick:"history.go(-2); return false;",class: "font"%>
+		</div>
+		<div class ="btn btn-success col-xs-3 col-xs-offset-2">
 			<%= link_to "情報入力に進む","/end_users/orders/new", class: "font" %>
 		</div>
 	</div>
