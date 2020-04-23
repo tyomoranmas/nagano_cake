@@ -1,4 +1,5 @@
 class EndUsers::OrdersController < ApplicationController
+  before_action :authenticate_end_user!
   before_action :set_current_end_user
 
   def new
@@ -9,16 +10,17 @@ class EndUsers::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @cart_items = @end_user.cart_items
-    if params[:add] == "1"
+    case params[:add]
+    when "1"
       @order.post_code = @end_user.post_code
       @order.address = @end_user.address
       @order.address_name = @end_user.last_name + @end_user.first_name
-    elsif params[:add] == "2"
+    when "2"
       @ship_address = ShipAddress.find(params[:order][:end_user_id])
       @order.post_code = @ship_address.post_code
       @order.address = @ship_address.address
       @order.address_name = @ship_address.address_name
-    elsif params[:add] == "3"
+    when "3"
       @order.end_user_id = @end_user.id
       @order.save
       render :confirm
@@ -30,6 +32,15 @@ class EndUsers::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.end_user_id = @end_user.id
     if @order.save
+
+    @cart_items.each do |item|
+      @order_product = OrderProduct.new(
+        product_id: item.product.id,
+        order_id: @order.id,
+        quantity: item.quantity,
+        tax_included_price: (item.product.tax_excluded_price * 1.1))
+        @order_product.save
+      end
       flash[:success] = "注文情報が登録できました"
       redirect_to end_users_finish_order_path(@order)
     end
@@ -37,11 +48,14 @@ class EndUsers::OrdersController < ApplicationController
 
   def index
     @orders = @end_user.orders
-    # @order_products = @orders.order_products
   end
 
   def show
     @order = Order.find(params[:id])
+    unless @order.end_user == @end_user
+      redirect_to end_users_orders_path
+    end
+    @order_products = @order.order_products
   end
 
 
