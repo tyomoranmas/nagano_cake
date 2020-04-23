@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_063520) do
     t.string "address"
     t.integer "postage", default: 800
     t.integer "total"
-    t.integer "payment", default: 0
+    t.boolean "payment", default: false
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

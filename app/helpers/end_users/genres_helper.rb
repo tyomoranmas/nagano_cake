@@ -1,2 +1,0 @@
-module EndUsers::GenresHelper
-end

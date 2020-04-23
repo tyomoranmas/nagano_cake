@@ -20,11 +20,12 @@
 </div>
 
 <div class="field">
-  <%= radio_button_tag(:add, "2") %>　<label>登録済住所から選択</label><br>
-  <%= f.collection_select :end_user_id, @end_user.ship_addresses, :id, :addressee %>
+  <%= radio_button_tag(:add, "2") %> <label>登録済住所から選択</label><br>
+  　<%= f.select :id, @ship_addresses.map{ |ship_address|
+  [ship_address.post_code + "　" + ship_address.address + "　" + ship_address.address_name, ship_address.id] } %>
 </div>
 
-<%= radio_button_tag(:add, "3") %>　<label>新しいお届け先</label>
+<%= radio_button_tag(:add, "3") %> <label>新しいお届け先</label>
 
 <div class="form-group" style="margin-left: 12px;">
   <%= render 'end_users/shared/address_form', f: f %>

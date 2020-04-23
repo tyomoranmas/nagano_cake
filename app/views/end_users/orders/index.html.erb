@@ -12,19 +12,13 @@
     </tr>
   </thead>
   <tbody>
-    <% @orders.each do |order| %>
     <tr>
-      <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-      <td>
-        <%= order.post_code %><br>
-        <%= order.address %><br>
-        <%= order.address_name %>
-      </td>
-      <td><%= order.order_products.map{ |order_product| order_product.product.name } %></td>
-      <td><%= order.total %></td>
-      <td><%= order.status %></td>
-      <td><%= link_to "表示する", end_users_order_path(order), class: "btn btn-primary"%></td>
+      <td>2000/5/2</td>
+      <td>1234567 東京都渋谷区神南一丁目19-11 パークスクエア2 4階 大森康</td>
+      <td>いちごのショートケーキ</td>
+      <td>2,300</td>
+      <td>入金確認</td>
+      <td><%= link_to "表示する", end_users_order_path(@order), class: "btn btn-primary"%></td>
     </tr>
-    <% end %>
   </tbody>
 </table>
