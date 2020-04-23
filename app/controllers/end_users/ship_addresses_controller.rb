@@ -1,4 +1,5 @@
 class EndUsers::ShipAddressesController < ApplicationController
+  before_action :authenticate_end_user!
   before_action :set_current_end_user
 
   def index
@@ -19,6 +20,9 @@ class EndUsers::ShipAddressesController < ApplicationController
 
   def edit
     @ship_address = ShipAddress.find(params[:id])
+    unless @ship_address.end_user == @end_user
+      redirect_to end_users_ship_addresses_path
+    end
   end
 
   def update

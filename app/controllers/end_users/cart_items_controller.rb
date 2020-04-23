@@ -1,4 +1,5 @@
 class EndUsers::CartItemsController < ApplicationController
+	before_action :authenticate_end_user!
 	def index
 			@end_user  = current_end_user
 			@cart_items = @end_user.cart_items
@@ -36,4 +37,4 @@ class EndUsers::CartItemsController < ApplicationController
 	def cart_item_params
 		params.require(:cart_item).permit(:quantity,:product_id,:end_user_id)
 	end
-end 
+end
