@@ -1,34 +1,40 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-1"></div>
-		<div class="col-xs-11">
-			<div class="menber-title">
-				<h1>会員詳細画面</h1>
-			</div>
+ <div class="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-11">
 
+   <div class="menber-title">
+    <h1>会員詳細画面</h1>
+   </div>
 
-			<div class="menber-box">
-				<%= form_for(@end_users, url: '/admins/end_users/:id' ) do |f| %>
-				　　顧客ID　　　　　　　　<%= f.id %> <button class="btn btn-info btn-xs">有効会員</button><br>
-				　　氏名　　　　　　　　　<%= f.address_name %><br>
-				　　フリガナ　　　　　　　<%= f.kana_name f.first_name_kana %><br>
-				　　郵便番号　　　　　　　<%= f.post_code %><br>
-				　　住所　　　　　　　　　<%= f.address %><br>
-				　　電話番号　　　　　　　<%= f.phone_number %><br>
-				　　メールアドレス　　　　<%= f.email %><br>
-				<% end %>
-			</div>
+   <div class="menber-box">
+    　　<label for="id"> 顧客ID </label>　　　　　　　　<%= @end_user.id %>
+     <button class="btn btn-info btn-xs">
+      <% if @end_user.is_deleted == false %>
+       <%= "有効会員" %>
+      <% else %>
+       <%= "退会済" %>
+      <% end %>
+     </button><br>
+    　　<label for="name"> 氏名 </label>　　　　　　　　　<%= @end_user.last_name %>&nbsp;<%= @end_user.first_name %><br>
+    　　<label for="name_kana"> フリガナ </label>　　　　　　　<%= @end_user.last_name_kana %>&nbsp;<%= @end_user.first_name_kana %><br>
+    　　<label for="post_code"> 郵便番号 </label>　　　　　　　〒<%= @end_user.post_code %><br>
+    　　<label for="address"> 住所 </label>　　　　　　　　　<%= @end_user.address %><br>
+    　　<label for="phone_number"> 電話番号 </label>　　　　　　　<%= @end_user.phone_number %><br>
+    　　<label for="email"> メールアドレス </label>　　　　<%= @end_user.email %><br>
+   </div>
 
-			<div class="actions">
-				　　<%= link_to  do %>
-				<button class="btn btn-primary">編集する</button>
-				<% end %>
-				<%= link_to admins_end_users_path do %>
-				<button class="btn btn-primary">注文履歴一覧を見る</button>
-				<% end %>
-			</div>
+   <div class="actions">
+    　　<%= link_to "/admins/end_users/#{@end_user.id}/edit" do %>
+     <button class="btn btn-primary">編集する</button>
+    <% end %>
+    <%= link_to admins_orders_path do %>
+     <button class="btn btn-primary">注文履歴一覧を見る</button>
+    <% end %>
+   </div>
 
-	</div>
+  </div>
+ </div>
 </div>
 
 

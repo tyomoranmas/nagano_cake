@@ -29,13 +29,12 @@ class EndUsers::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.end_user_id = @end_user.id
     if @order.save
-
-    @cart_items.each do |item|
-      @order_product = OrderProduct.new(
-        product_id: item.product.id,
-        order_id: @order.id,
-        quantity: item.quantity,
-        tax_included_price: (item.product.tax_excluded_price * 1.1))
+      @cart_items.each do |item|
+        @order_product = OrderProduct.new(
+          product_id: item.product.id,
+          order_id: @order.id,
+          quantity: item.quantity,
+          tax_included_price: (item.product.tax_excluded_price * 1.1))
         @order_product.save
       end
       flash[:success] = "注文情報が登録できました"

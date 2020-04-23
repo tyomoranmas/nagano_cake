@@ -5,17 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Genre.create!(name: "ケーキ")
-           
-
-Genre.create!(name: "ケーキ2")
-           
-
-Genre.create!(name: "ケーキ3")
-           
-
-Genre.create!(name: "ケーキ4")
-           
 
 Product.create!(genre_id: 1,
 									name: "ショートケーキ",

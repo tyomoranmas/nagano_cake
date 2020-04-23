@@ -1,9 +1,9 @@
 <div class="field">
   <%= f.label :郵便番号（ハイフンなし）, class: "post_code" %>
-  〒 <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
+  <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
 </div>
 
 <div class="field">
   <%= f.label :住所, class: "address" %>
-  <%= f.text_field :address, autofocus: true, autocomplete: "address", size: 60 %>
+  <%= f.text_field :address, autofocus: true, autocomplete: "address", style: "width: 35%;" %>
 </div>
