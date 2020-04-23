@@ -43,5 +43,5 @@ Rails.application.routes.draw do
   resources :products, only: [:index, :new, :edit, :show, :create, :update, :destroy]
   end
 
-  root 'products#top'
+  root 'end_users/products#top'
 end

@@ -1,4 +1,6 @@
 class EndUsers::CartItemsController < ApplicationController
+	 before_action :authenticate_end_user!,only: [:create,:edit,:update,:destroy,:index]
+
 	def index
 			@end_user  = current_end_user
 			@cart_items = @end_user.cart_items
@@ -18,6 +20,9 @@ class EndUsers::CartItemsController < ApplicationController
 	def destroy
 			@cart_item = CartItem.find(params[:id])
 			@cart_item.destroy
+			@cart_item_id = @cart_item.id
+			@end_user  = current_end_user
+			@cart_items = @end_user.cart_items
 			redirect_to end_users_cart_items_path
 	end
 	def destroy_all
@@ -36,4 +41,5 @@ class EndUsers::CartItemsController < ApplicationController
 	def cart_item_params
 		params.require(:cart_item).permit(:quantity,:product_id,:end_user_id)
 	end
+	
 end 
