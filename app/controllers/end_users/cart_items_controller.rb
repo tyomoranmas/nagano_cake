@@ -23,7 +23,7 @@ class EndUsers::CartItemsController < ApplicationController
 			@cart_item_id = @cart_item.id
 			@end_user  = current_end_user
 			@cart_items = @end_user.cart_items
-			render "index"
+			redirect_to end_users_cart_items_path
 	end
 	def destroy_all
 		@end_user  = current_end_user
