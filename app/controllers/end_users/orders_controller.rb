@@ -21,9 +21,6 @@ class EndUsers::OrdersController < ApplicationController
       @order.address = @ship_address.address
       @order.address_name = @ship_address.address_name
     when "3"
-      @order.end_user_id = @end_user.id
-      @order.save
-      render :confirm
     end
   end
 
@@ -43,6 +40,8 @@ class EndUsers::OrdersController < ApplicationController
       end
       flash[:success] = "注文情報が登録できました"
       redirect_to end_users_finish_order_path(@order)
+    else
+      render :new
     end
   end
 
