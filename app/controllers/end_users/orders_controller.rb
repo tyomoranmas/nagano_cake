@@ -20,7 +20,7 @@ class EndUsers::OrdersController < ApplicationController
       @order.post_code = @ship_address.post_code
       @order.address = @ship_address.address
       @order.address_name = @ship_address.address_name
-    when"3"
+    when "3"
       @order.end_user_id = @end_user.id
       @order.save
       render :confirm
