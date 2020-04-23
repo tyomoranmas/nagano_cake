@@ -1,0 +1,2 @@
+module EndUsers::ShipAddressesHelper
+end

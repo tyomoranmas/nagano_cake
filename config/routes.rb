@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :end_users do
-    get 'genres/show'
-  end
   devise_for :end_users, controllers: {
     sessions: 'end_users/sessions',
     passwords: 'end_users/passwords',

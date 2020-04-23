@@ -8,7 +8,7 @@ class EndUser < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
 
-
+  enum is_deleted: { 有効: false, 無効: true }
 
   validates :last_name, :first_name, :address, presence: true
   validates :last_name_kana, :first_name_kana,  presence: true,
