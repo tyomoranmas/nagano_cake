@@ -6,23 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Product.create!(genre_id: 1,
-									name: "ショートケーキ",
-									introduction: "美味しいショートケーキ",
-									tax_excluded_price: "500",
-									image_id: "")
-Product.create!(genre_id: 2,
-									name: "モンブラン",
-									introduction: "美味しいモンブラン",
-									tax_excluded_price: "400",
-								  image_id: "")
-Product.create!(genre_id: 3,
-									name: "ロールケーキ",
-									introduction: "美味しいロールケーキ",
-									tax_excluded_price: "550",
-									image_id: "")
-Product.create!(genre_id: 4,
-									name: "ショコラ",
-									introduction: "美味しいショコラ",
-									tax_excluded_price: "500",
-									image_id: "")
+Genre.create!(name: "ケーキ")
+
+Genre.create!(name: "クッキー")
+
+Genre.create!(name: "チョコレート")
+
+Genre.create!(name: "プリン・ゼリー")
+
+Genre.create!(name: "和菓子")
+
+Genre.create!(name: "アイス")
+
+Admin.create!(email: "abc@abc.com",
+							password: "password",
+							password_confirmation: "password")
