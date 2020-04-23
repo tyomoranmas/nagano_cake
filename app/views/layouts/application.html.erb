@@ -50,7 +50,7 @@
 
         <% elsif end_user_signed_in? %><!--end_userログイン後表示-->
           <li>
-            <%= link_to 'マイページ', end_user_path(current_end_user.id), class: "glyphicon glyphicon-user" %></li>
+
           <li>
             <%=link_to '商品一覧', end_users_products_path,  class: "glyphicon glyphicon-cutlery" %>
           </li>
