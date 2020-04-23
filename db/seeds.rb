@@ -6,34 +6,38 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Genre.create!(name: "ケーキ")
-           
 
-Genre.create!(name: "ケーキ2")
-           
+Genre.create!(name: "クッキー")
 
-Genre.create!(name: "ケーキ3")
-           
+Genre.create!(name: "チョコレート")
 
-Genre.create!(name: "ケーキ4")
-           
+Genre.create!(name: "プリン・ゼリー")
+
+Genre.create!(name: "和菓子")
+
+Genre.create!(name: "アイス")
 
 Product.create!(genre_id: 1,
-									name: "ショートケーキ",
-									introduction: "美味しいショートケーキ",
-									tax_excluded_price: "500",
-									image_id: "")
+								name: "ショートケーキ",
+								introduction: "美味しいショートケーキ",
+								tax_excluded_price: "500",
+								image_id: "")
 Product.create!(genre_id: 2,
-									name: "モンブラン",
-									introduction: "美味しいモンブラン",
-									tax_excluded_price: "400",
-								  image_id: "")
+								name: "モンブラン",
+								introduction: "美味しいモンブラン",
+								tax_excluded_price: "400",
+							  image_id: "")
 Product.create!(genre_id: 3,
-									name: "ロールケーキ",
-									introduction: "美味しいロールケーキ",
-									tax_excluded_price: "550",
-									image_id: "")
+								name: "ロールケーキ",
+								introduction: "美味しいロールケーキ",
+								tax_excluded_price: "550",
+								image_id: "")
 Product.create!(genre_id: 4,
-									name: "ショコラ",
-									introduction: "美味しいショコラ",
-									tax_excluded_price: "500",
-									image_id: "")
+								name: "ショコラ",
+								introduction: "美味しいショコラ",
+								tax_excluded_price: "500",
+								image_id: "")
+
+Admin.create!(email: "abc@abc.com",
+							password: "password",
+							password_confirmation: "password")
