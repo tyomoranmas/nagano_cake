@@ -22,7 +22,7 @@
 
         <div>
           <%=link_to end_users_product_path(product) do%>
-          <%= attachment_image_tag(product, :image, :fill, 100,100, fallback: "no_image.png", style: "weight: 100%;")%>
+          <%= attachment_image_tag(product, :image, :fill, 100,100, fallback: "no_image.png", style: "width: 100%;")%>
           <% end %>
         </div>
         <strong><%=product.name%><br>¥<%=product.tax_excluded_price%></strong>

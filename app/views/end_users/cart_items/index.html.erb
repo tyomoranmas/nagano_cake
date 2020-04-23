@@ -21,14 +21,14 @@
 			<tr>
 				<td><%= attachment_image_tag(item.product, :image,:fill, 100,100, fallback:"no_image.png", style: "width:25%;height: 40px;")%>
 				<%=item.product.name%></td>
-				<td style="text-align: center;">¥<%= (item.product.tax_excluded_price * 1.10).floor%></td>
+				<td style="text-align: center;">¥<%= (item.product.tax_excluded_price * 1.10).floor.to_s(:delimited)%></td>
 				<%=form_for [:end_users, item] do |f|%>
 					<td>
 						<div style="margin-left:auto;"><%= f.select :quantity,[[item.quantity.to_i],
 					['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]]%>個　<%=f.submit"変更",class: "btn btn-primary"%></div>
 				</td>
 				<%end%>
-				<td>¥<%= ((item.product.tax_excluded_price)*(item.quantity)* (1.10)).floor%></td>
+				<td>¥<%= ((item.product.tax_excluded_price)*(item.quantity)* (1.10)).floor.to_s(:delimited)%></td>
 				<%@sum += ((item.product.tax_excluded_price)*(item.quantity)* (1.10)).floor%>
 				<td ><%= link_to "削除", "/end_users/cart_items/#{item.id}",class: "btn btn-danger", method: :delete%></td>
 				</div>
@@ -44,7 +44,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td class="active" style="width: 50%; text-align: center;"><strong>合計金額</strong></td><td style="text-align: center; font-size: 120%;"><%= @sum%></td>
+						<td class="active" style="width: 50%; text-align: center;"><strong>合計金額</strong></td><td style="text-align: center; font-size: 120%;"><%= @sum.to_s(:delimited)%></td>
 					</tr>
 				</tbody>
 			</table>
