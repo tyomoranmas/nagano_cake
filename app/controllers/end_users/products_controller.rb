@@ -4,7 +4,7 @@ class EndUsers::ProductsController < ApplicationController
 		@genres = Genre.all
 	end
 	def index
-		@products = Product.page(params[:page]).reverse_order
+		@products = Product.page(params[:page]).reverse_order.per(8)
 		@products2 = Product.all
 		@genres = Genre.all
 	end

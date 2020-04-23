@@ -70,5 +70,4 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem "aasm"
 gem 'faker'
-gem 'will_paginate'
-gem 'bootstrap-will_paginate'
+

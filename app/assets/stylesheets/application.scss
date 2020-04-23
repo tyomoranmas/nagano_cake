@@ -15,12 +15,9 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
-.margin-right {
-  margin-right: 10px;
-}
 
 .form-submit {
-  padding-top: 200px;
+  padding-top: 100px;
 }
 .add-product {
   margin: 0 20px;
@@ -70,6 +67,9 @@ h2 {
   text-align: center;
   padding-top: 20%;
 }
+.font {
+  color: white;
+}
 
 // form layout
 .field {
@@ -93,7 +93,7 @@ h2 {
     padding-right: 130px;
   }
   .post_code {
-    padding-right: 41px;
+    padding-right: 60px;
   }
   .address {
     padding-right: 200px;
@@ -148,5 +148,8 @@ footer {
   border-top: thin solid #DDDDDD;
 }
 
-
+.page a {
+  color: gray;
+  text-decoration: none;
+}
 

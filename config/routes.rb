@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :end_users do
-    get 'genres/show'
-  end
   devise_for :end_users, controllers: {
     sessions: 'end_users/sessions',
     passwords: 'end_users/passwords',
@@ -37,11 +34,11 @@ Rails.application.routes.draw do
 
 
   namespace :admins do
-    resources :end_users, only: [:index, :edit, :show, :update]
-    resources :orders, only: [:index, :show, :update]
-    resources :genres, only: [:index, :edit, :create, :update]
-    resources :products, only: [:index, :new, :edit, :show, :create, :update, :destroy]
+  resources :end_users, only: [:index, :edit, :show, :update]
+  resources :orders, only: [:index, :show, :update]
+  resources :genres, only: [:index, :edit, :create, :update]
+  resources :products, only: [:index, :new, :edit, :show, :create, :update, :destroy]
   end
 
-  root 'products#top'
+  root 'end_users/products#top'
 end

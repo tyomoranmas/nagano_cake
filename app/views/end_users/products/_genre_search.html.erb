@@ -5,19 +5,14 @@
 		</div>
 		<div class ="panel-body">
 			<%@genres.each do |genre|%>
-			<table style="margin:0 auto;">
+			<table style=";">
 				<tbody>
-					<tr>
-
-						<td><%= link_to genre.name,end_users_genre_path(genre.id)%></td>
-
+					<tr class="list-group">
+						<td class="list-group-item"><strong><%= link_to genre.name,end_users_genre_path(genre.id)%></strong></td>
 					</tr>
 				</tbody>
 			</table>
-
 			<% end %>
-
-
 		</div>
 	</div>
 </div>
