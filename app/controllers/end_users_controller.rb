@@ -19,9 +19,9 @@ class EndUsersController < ApplicationController
   end
 
   def delete
-    @end_user.is_deleted = true
-    @end_user.save
-    redirect_to new_end_user_session_path, notice: "ありがとうございました。またのご利用を心よりお待ちしております。"
+    @end_user.update(is_deleted: true)
+    sign_out current_end_user
+    redirect_to root_path, notice: "ありがとうございました。またのご利用を心よりお待ちしております。"
   end
 
   private

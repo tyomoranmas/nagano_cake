@@ -2,7 +2,7 @@
   <h1>マイページ</h1>
   <h2 class="col-xs-2">登録情報</h2>
   <%= link_to "編集する", edit_end_user_path(@end_user), class: "btn btn-primary col-xs-2 edit-btn" %>
-  <%= link_to "パスワードを変更する", edit_end_user_password_path, class: "btn btn-primary col-xs-3 pass-btn" %>
+  <%= link_to "パスワードを変更する", edit_end_user_registration_path(@end_user), class: "btn btn-primary col-xs-3 pass-btn" %>
 
   <table class="table table-bordered">
     <tr>

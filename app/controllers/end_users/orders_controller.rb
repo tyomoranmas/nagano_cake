@@ -21,6 +21,12 @@ class EndUsers::OrdersController < ApplicationController
       @order.address = @ship_address.address
       @order.address_name = @ship_address.address_name
     when "3"
+      @ship_address = ShipAddress.new(
+        end_user_id: @end_user.id,
+        post_code: @order.post_code,
+        address: @order.address,
+        address_name: @order.address_name)
+      @ship_address.save
     end
   end
 
@@ -36,6 +42,7 @@ class EndUsers::OrdersController < ApplicationController
           quantity: item.quantity,
           tax_included_price: (item.product.tax_excluded_price * 1.1))
         @order_product.save
+        item.destroy
       end
       flash[:success] = "注文情報が登録できました"
       redirect_to end_users_finish_order_path(@order)
