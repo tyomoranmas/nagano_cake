@@ -2,30 +2,29 @@ class Admins::OrdersController < ApplicationController
  def index
   @orders  = Order.all.order(created_at: :asc)
   @orders  = Order.page(params[:page]).per(10)
-  @cart_items = CartItem.all.all.order(created_at: :asc)
+  @cart_items = CartItem.all.order(created_at: :asc)
   @cart_items = CartItem.page(params[:page]).per(10)
  end
 
  def show
-  @order = Order.find_by(params[:id])
-  if @order
-  else
-   redirect_to admins_orders_path
-   flash[:notice] = "本日の注文は、有りません"
-  end
+  @end_user = EndUser.find(params[:id])
+  @order = Order.find(params[:id])
+  @order_products = @order.order_products
+  @order_product = OrderProduct.find(params[:id])
  end
 
  def update
   order = Order.find(params[:id])
   order.update(order_params)
-  redirect_to admins_order_path(@end_user)
+  redirect_to admins_order_path(order)
  end
 
  private
+
  def order_params
-  params.require(:order).permit(:status, :created_at, :address_name)
+  params.require(:order).permit(:status)
  end
- def cart_item_params
-  params.require(:order).permit(:quantity)
+ def order_product_params
+  params.require(:order_product).permit(:production_status)
  end
 end
