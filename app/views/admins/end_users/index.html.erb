@@ -37,11 +37,7 @@
             </td>
 
             <td>
-              <% if end_user.is_deleted == false %>
-              <%= "有効" %>
-              <% else %>
-              <%= "退会済" %>
-              <% end %>
+              <%= end_user.is_deleted %>
             </td>
 
           </tr>

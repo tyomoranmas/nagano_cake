@@ -24,7 +24,7 @@
       </tr>
       <tr>
         <td><%= f.label :tax_excluded_price, "税込価格（税抜価格）" %></td>
-        <td><%= (BigDecimal(@product.tax_excluded_price) * BigDecimal("1.1")).floor %>（<%= @product.tax_excluded_price %>）円</td>
+        <td><%= (BigDecimal(@product.tax_excluded_price) * BigDecimal("1.1")).floor.to_s(:delimited) %>（<%= @product.tax_excluded_price %>）円</td>
       </tr>
       <tr>
         <td><%= f.label :is_stopped, "販売ステータス" %></td>

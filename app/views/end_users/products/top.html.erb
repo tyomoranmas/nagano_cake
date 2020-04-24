@@ -11,28 +11,23 @@
     </div>
   </div>
 </div>
-
 <div class="row">
   <div class="col-xs-9 col-xs-offset-2" . style="font-family: 'SimSun';">
     <h2 class="">　　　オススメ商品</h2>
-    <% @products.each do |product|%>
-
     <div class="col-xs-offset-1">
+    <% @products.each do |product|%>
       <div class="col-xs-3">
-
         <div>
           <%=link_to end_users_product_path(product) do%>
-          <%= attachment_image_tag(product, :image, :fill, 100,100, fallback: "no_image.png", style: "weight: 100%;")%>
+            <%= attachment_image_tag(product, :image, :fill, 100,100, fallback: "no_image.png", style: "width: 100%;")%>
           <% end %>
         </div>
         <strong><%=product.name%><br>¥<%=product.tax_excluded_price%></strong>
       </div>
-
-
-      <div class="col-xs-3 col-xs-offset-11">
-        <%=link_to"もっと見る>>", end_users_products_path%>
-      </div>
-    </div>
     <% end %>
-  </div>
+        <div class="col-xs-3 col-xs-offset-11">
+          <%=link_to"もっと見る>>", end_users_products_path%>
+        </div>
+    </div>
 </div>
+
