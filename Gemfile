@@ -56,7 +56,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-   gem 'minitest'
+  gem 'rails-controller-testing'
+  gem 'minitest'
   gem 'minitest-reporters'
 end
 
@@ -72,4 +73,3 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem "aasm"
 gem 'faker'
-
