@@ -1,5 +1,15 @@
 <div class="row">
 	<div class ="col-xs-10 col-xs-offset-1">
+		<%if @end_user.cart_items.size.zero?%>
+			<div>
+				<h1>ショッピングカート</h1>
+				<div class="" style=" height: 300px; text-align: center;">
+					<div style=" height:130px;"></div>
+					<strong style = "font-size: 150%; ">カートに商品がありません</strong>
+				</div>
+			<%=link_to "買い物を続ける","/",class: "btn btn-primary font col-xs-4 col-xs-offset-4"%>
+		</div>
+		<% else %>
 		<h1>ショッピングカート</h1>
 			<%=link_to "カートを空にする",destroy_all_path,class: "btn btn-danger col-xs-3 col-xs-offset-9", method: :delete %>
 		<div class="col-xs-10" style="height: 50px;">
@@ -55,5 +65,7 @@
 		<div >
 			<%= link_to "情報入力に進む","/end_users/orders/new", class: "btn btn-success font col-xs-3 col-xs-offset-2" %>
 		</div>
+		</div>
+		<% end %>
 	</div>
 </div>
