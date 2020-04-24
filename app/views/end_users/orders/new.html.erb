@@ -1,22 +1,43 @@
 <h1>注文情報入力</h1>
-<%= form_for [:end_users, @order] do |f| %>
+<%= render 'layouts/error_message', model: @order %>
+<%= form_for(@order, { url: end_users_confirm_order_path }) do |f| %>
 <h2>支払方法</h2>
-<%= f.radio_button :payment, :クレジットカード, checked: true %>
-<%= f.label :クレジットカード %>
-<%= f.radio_button :payment, :銀行振込 %>
-<%= f.label :銀行振込 %>
+<div class="field">
+  <%= f.radio_button :payment, :クレジットカード, checked: true %>
+  <%= f.label :クレジットカード %>
+</div>
+
+<div class="field">
+  <%= f.radio_button :payment, :銀行振込 %>
+  <%= f.label :銀行振込 %>
+</div>
 
 <h2>お届け先</h2>
-<%= radio_button_tag("_add", "EndUser", [checked: true]) %><label>ご自身の住所</label>
 
-<%= radio_button_tag("_add", "ShipAddress") %><label>登録済住所から選択</label>
-
-<%= radio_button_tag("_add", "New") %><label>新しいお届け先</label>
-<%= render 'end_users/shared/address_form', f: f %>
 <div class="field">
-  <%= f.label :宛名, class: "address_name" %>
-  <%= f.text_field :address_name, autofocus: true, autocomplete: "address_name" %>
+  <%= radio_button_tag(:add, "1", [checked: true]) %>　<label>ご自身の住所</label><br>
+  　<label><%= @end_user.post_code %> <%= @end_user.address %></label>
+  <label><%= @end_user.last_name %><%= @end_user.first_name %></label>
 </div>
-<%= f.submit "確認画面に進む", class: "btn btn-primary" %>
+
+<div class="field">
+  <%= radio_button_tag(:add, "2") %> <label>登録済住所から選択</label><br>
+  　<%= f.select :id, @ship_addresses.map{ |ship_address|
+  [ship_address.post_code + "　" + ship_address.address + "　" + ship_address.address_name, ship_address.id] } %>
+</div>
+
+<%= radio_button_tag(:add, "3") %> <label>新しいお届け先</label>
+
+<div class="form-group" style="margin-left: 12px;">
+  <%= render 'end_users/shared/address_form', f: f %>
+  <div class="field">
+    <%= f.label :宛名, class: "address_name" %>
+    <%= f.text_field :address_name, autofocus: true, autocomplete: "address_name" %>
+  </div>
+</div>
+
+<div class="actions">
+  <%= f.submit "確認画面に進む", class: "btn btn-primary col-xs-offset-3" %>
+</div>
 
 <% end %>

@@ -4,13 +4,13 @@
 			<%= render 'end_users/products/genre_search'%>
 			
 				<div class="col-xs-3 col-xs-offset-1">
-					<%= attachment_image_tag(@product, :image,:fill, 50,50, fallback:"no_image.png", size:'400x200')%>
+					<%= attachment_image_tag(@product, :image,:fill, 50,50, fallback:"no_image.png", style: "width:160%; height:250px;")%>
 				</div>
 				<div class="col-xs3 col-xs-offset-9">
 				<h1><strong><%=@product.name%></strong></h1>
 				
 				<p><%=@product.introduction%></p>
-				<h2><strong>¥<%=(@product.tax_excluded_price * 1.10).floor%></strong><small>（税込）</small></h2>
+				<h2><strong>¥<%=(@product.tax_excluded_price * 1.10).floor.to_s(:delimited)%></strong><small>（税込）</small></h2>
 				</div>
 				<div class="col-xs-3 col-xs-offset-9">
 					<%=form_for([:end_users, @cart_item]) do |f|%>
