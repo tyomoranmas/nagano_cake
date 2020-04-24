@@ -8,7 +8,6 @@ class Admins::EndUsersController < ApplicationController
       @end_user = EndUser.find(params[:id])
    end
 
-
    def edit
       @end_user = EndUser.find(params[:id])
    end
@@ -16,7 +15,7 @@ class Admins::EndUsersController < ApplicationController
    def update
       end_user = EndUser.find(params[:id])
       end_user.update(end_user_params)
-      redirect_to admin_end_user_path(@end_user)
+      redirect_to admins_end_user_path(end_user.id)
    end
 
    private
