@@ -1,21 +1,30 @@
 class Admins::OrdersController < ApplicationController
-   def index
-    @orders = Order.all
-   end
+ def index
+  @orders  = Order.all.order(created_at: :asc)
+  @orders  = Order.page(params[:page]).per(10)
+  @cart_items = CartItem.all.order(created_at: :asc)
+  @cart_items = CartItem.page(params[:page]).per(10)
+ end
 
-   def show
-    @order = Order.find(params[:id])
+ def show
+  @end_user = EndUser.find(params[:id])
+  @order = Order.find(params[:id])
+  @order_products = @order.order_products
+  @order_product = OrderProduct.find(params[:id])
+ end
 
-   end
+ def update
+  order = Order.find(params[:id])
+  order.update(order_params)
+  redirect_to admins_order_path(order)
+ end
 
-   def update
-      order = Order.find(params[:id])
-      order.update(order_params)
-      redirect_to admins_order_path(end_user.id)
-   end
+ private
 
-   private
-   def end_user_params
-   params.require(:end_user).permit(:name, :emaail)
-   end
+ def order_params
+  params.require(:order).permit(:status)
+ end
+ def order_product_params
+  params.require(:order_product).permit(:production_status)
+ end
 end

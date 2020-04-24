@@ -67,6 +67,9 @@ h2 {
   text-align: center;
   padding-top: 20%;
 }
+.font {
+  color: white;
+}
 
 // form layout
 .field {
@@ -123,3 +126,30 @@ h2 {
   table-layout: auto;
   width: 100%;
 }
+
+.form-image {
+  display: inline-block;
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+
+header {
+  height: 120px;
+}
+
+.logo {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  border-top: thin solid #DDDDDD;
+}
+
+.page a {
+  color: gray;
+  text-decoration: none;
+}
+

@@ -1,64 +1,84 @@
-<div class="container">
 <div class="row">
-	<div class="col-xs-7">
-		<div class="order-title">
-			<h1>注文詳細画面</h1>
-		</div>
+<div class="col-xs-7">
+ <div class="order-title">
+  <h1>注文詳細画面</h1>
+ </div>
 
-		<div class="customer-box">
-		<% form_for(@end_user, url: '/admins/orders/id') do |f| %>
-		<label for="name"> 購入者 </label> <%= link_to f.name, admins_end_user_path(end_user_id) %> <br>
-		<label for="ship_addresses"> 配送先 </label>  <%= f.address_name %> <br>
-		<label for="payment"> 支払方法 </label> <%= f.payment %> <br>
-		<label for="status"> 注文ステータス </label>
-		<%= f.select :status, [['入金待ち',0], ['入金確認',1], ['製作中',2], ['発送準備中',3], ['発送済み',4] %> 
-        <%= f.submit "更新", class: 'btn btn-primary col-xs-12'%> <br>
-		<% end %>
-	    </div>
+ <div class="customer-box">
+  <label for="name"> 購入者 </label>
+  <%= link_to admins_end_user_path(@end_user.id) do %>
+   <%= @order.address_name %>
+  <% end %><br>
+  <label for="ship_addresses"> 配送先 </label>
+  〒<%= @order.address %> <br>
 
-		<div class="order-box">
-			<table class='table'>
-
-				<thead>
-					<tr class="active">
-						<th>商品名</th>
-						<th>単価 (税込)</th>
-						<th>数量</th>
-						<th>小計</th>
-						<th>制作ステータス</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<% form_for(@order) do |f| %>
-						<tr>
-							<td><%=  %></td>
-							<td><%=  %></td>
-							<td><%=  %></td>
-							<td><%=  %></td>
-							<td><%=  %> <%= f.select :status, [['着手不可',0, ['製作待ち',1], ['製作中',2], ['製作完了',3] %><%= f.submit "更新", class: 'btn btn-primary col-xs-12'%></td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-		</div>
-	</div>
+  <label for="payment"> 支払方法 </label>
+  <%= @order.payment %> <br>
+  <%= form_for [:admins, @order] do |f| %>
+<div class="field">
+    <%= f.label :注文ステータス %>
+    <%= f.select :status, Order.statuses.keys %>
+  </div>
+    <div class="actions">
+      <%= f.submit "更新", class: 'btn btn-primary col-xs-2' %>
+    </div>
+  <% end %>
+ </div>
 
 
+ <div class="order-box">
+  <table class='table'>
+
+   <thead>
+    <tr class="active">
+     <th>商品名</th>
+     <th>単価 (税込)</th>
+     <th>数量</th>
+     <th>小計</th>
+     <th>製作ステータス</th>
+    </tr>
+   </thead>
+
+   <tr>
+      <% @order_products.each do |item| %>
+        <td> <%= item.product.name %> </td>
+        <td> <%= item.tax_included_price %> </td>
+        <td> <%= item.quantity %> </td>
+        <td> <%= item.tax_included_price * item.quantity %> </td>
+      <% end %>
+
+    <td>
+      <%= form_for [:admins, @order_product] do |f| %>
+        <div class="field">
+          <%= f.select :production_status, OrderProduction.production_statuses.key %>
+        </div>
+        <div class="actions">
+          <%= f.submit "更新", class: 'btn btn-primary col-xs-4' %>
+        </div>
+      <% end %>
+    </td>
+   </tr>
+
+  </table>
+ </div>
+ </div>
 <div class="col-xs-2"></div>
-	<div class="col-xs-3">
-		<div class="price-box">
-			<% form_for(@order, url: '/admins/orders/:id') do |order| %>
-			<label for="total"> 商品合計 </label> <%= order.total %>円 <br>
-			<label for="postage"> 送料 </label> <%= order.postage %>円 <br>
-			<label for=""> 請求金額合計 </label> <%= oder. %>円 <br>
-			<% end %>
-		</div>
-	</div>
 
-	</div>
+<div class="col-xs-3">
+ <div class="price-box">
+  <label for="total"> 商品合計 </label>
+   <%= @order.total %> 円 <br>
+  <label for="postage"> 送料 </label>
+   <%= @order.postage %> 円 <br>
+  <label for=""> 請求金額合計 </label>
+   <%= @order.total + @order.postage %> 円 <br>
+ </div>
+</div>
 
 </div>
+
+
+
 
 
 

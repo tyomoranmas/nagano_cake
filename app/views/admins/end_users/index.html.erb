@@ -1,42 +1,51 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-3">
-			<div class="menbers-title">
-				<h1>会員一覧画面</h1>
-			</div>
-		</div>
-		<div class="col-xs-6">
-			<div class="menbers-box">
+<div class="row">
+  <div class="col-xs-3">
+    <div class="menbers-title">
+      <h1>会員一覧画面</h1>
+    </div>
+  </div>
 
-				<table class='table'>
+  <div class="col-xs-6">
+    <div class="menbers-box">
+      <table class='table'>
 
-					<thead>
-						<tr class="active">
-							<th>会員ID</th>
-							<th>氏名</th>
-							<th>メールアドレス</th>
-							<th>ステータス</th>
-						</tr>
-					</thead>
+        <thead>
+          <tr class="active">
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
 
-					<tbody>
-						<% @end_users.each do |f| %>
-						<tr>
-							<td><%= f.id %></td>
-							<td><%= link_to f.last_name,f.first_name admin_end_user_path %></td>
-							<td><%= f.email %></td>
-							<td><%= f.status %></td>
-						</tr>
-						<% end %>
-					</tbody>
-				</table>
+        <tbody>
+          <% @end_users.each do |end_user| %>
+          <tr>
 
+            <td>
+              <%= end_user.id %>
+            </td>
 
-			</div>
-		</div>
-		<div class="col-xs-3"></div>
+            <td>
+              <%= link_to admins_end_user_path(end_user.id) do %>
+              <%= end_user.last_name %> <%= end_user.first_name %>
+              <% end %>
+            </td>
 
-	</div>
+            <td>
+              <%= end_user.email %>
+            </td>
+
+            <td>
+              <%= end_user.is_deleted %>
+            </td>
+
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @end_users %>
+    </div>
+  </div>
+  <div class="col-xs-3"></div>
 </div>
-
-
