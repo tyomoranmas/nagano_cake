@@ -10,7 +10,7 @@
             <%= attachment_image_tag(product, :image,:fill, 100,100, fallback:"no_image.png", style: "width:100%;")%>
           <%end%>
         </div>
-        <strong><%=product.name%><br>¥<%=product.tax_excluded_price%></strong>
+        <strong><%=product.name%><br>¥<%=product.tax_excluded_price.to_s(:delimited)%></strong>
       </div>
     <%end%>
       <div style="text-align: center;"><%= paginate @products%></div>
