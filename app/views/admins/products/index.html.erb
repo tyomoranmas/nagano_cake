@@ -17,13 +17,15 @@
     </thead>
     <tbody>
       <% @products.each do |product| %>
-        <tr>
-          <td><%= product.id %></td>
-          <td><%= link_to product.name, admins_product_path(product.id) %></td>
-          <td>¥<%= product.tax_excluded_price.to_s(:delimited) %></td>
-          <td><%= product.genre.name %></td>
-          <td><%= product.is_stopped %></td>
-        </tr>
+        <% if product.genre.is_disabled == "有効" %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= link_to product.name, admins_product_path(product.id) %></td>
+            <td>¥<%= product.tax_excluded_price.to_s(:delimited) %></td>
+            <td><%= product.genre.name %></td>
+            <td><%= product.is_stopped %></td>
+          </tr>
+        <% end %>
       <% end %>
       <%= paginate @products, class: "paginate" %>
     </tbody>
