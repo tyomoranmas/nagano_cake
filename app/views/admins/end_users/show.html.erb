@@ -21,7 +21,7 @@
 
  <div class="actions">
 　　<%= link_to "編集する", "/admins/end_users/#{@end_user.id}/edit", class: "btn btn-primary" %>
-    <%= link_to "注文履歴一覧を見る", admins_orders_path, class: "btn btn-primary" %>
+    <%= link_to "注文履歴一覧を見る", admins_order_path(@end_user.id), class: "btn btn-primary" %>
  </div>
 
 </div>
