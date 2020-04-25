@@ -17,7 +17,8 @@
 @import "bootstrap";
 
 .form-submit {
-  padding-top: 100px;
+  padding-top: 240px;
+  height: auto;
 }
 .add-product {
   margin: 0 20px;
@@ -130,6 +131,7 @@ h2 {
 .form-image {
   display: inline-block;
   box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
 }
 
 footer {
