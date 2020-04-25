@@ -1,54 +1,52 @@
 <div class="row">
-<div class="col-xs-9">
- <div class="orders-title">
-  <h1>注文一覧画面</h1>
- </div>
- <div class="orders-box">
-  <table class='table'>
 
-   <thead>
-    <tr class="active">
-     <th>購入日時</th>
-     <th>購入者</th>
-     <th>注文個数</th>
-     <th>注文ステータス</th>
-    </tr>
-   </thead>
+  <div class="col-xs-12">
+    <div class="orders-title">
+      <h1>注文一覧画面</h1>
+    </div>
+    <div class="orders-box">
+      <table class='table'>
 
-   <tbody>
-    <tr>
-     <% @orders.each do |order| %>
-      <td>
-      <%= link_to "/admins/orders/#{order.id}" do %>
-       <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
-      <% end %>
-      </td>
+        <thead>
+          <tr class="active">
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
 
-      <td>
-      <%= order.address_name %>
-      </td>
-    <% end %>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <%= link_to admins_order_path(order) do %>
+              <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+              <% end %>
+            </td>
 
-    <% @cart_items.each do |item| %>
-     <td>
-     <%= item.quantity %>
-     </td>
-    <% end %>
+            <td>
+              <%= order.address_name %>
+            </td>
+            <% total_quantity = 0 %>
+            <% order.order_products.each do |item| %>
+            <td>
+              <%= total_quantity += item.quantity %>
+            </td>
+            <% end %>
 
-    <% @orders.each do |order| %>
-     <td>
-     <%= order.status %>
-     </td>
-   <% end %>
+            <td>
+              <%= order.status %>
+            </td>
 
-    </tr>
-   </tbody>
-  </table>
-  <%= paginate @orders %>
- </div>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @orders %>
+    </div>
+
+  </div>
+  <div class="col-xs-3"></div>
 
 </div>
-<div class="col-xs-3"></div>
-
-</div>
-

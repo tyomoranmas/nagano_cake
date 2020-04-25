@@ -2,8 +2,14 @@
   <div class="inner">
     <div id="mobile-head">
       <div class="logo">
-        <%= link_to root_path do %>
-          <%= image_tag 'logo_pink-2.jpg', class: 'logo-img' %>
+        <% if admin_signed_in? %>
+          <%= link_to top_admin_path do %>
+            <%= image_tag 'logo_pink-2.jpg', class: 'logo-img' %>
+          <% end %>
+        <% else %>
+          <%= link_to root_path do %>
+            <%= image_tag 'logo_pink-2.jpg', class: 'logo-img' %>
+          <% end %>
         <% end %>
       </div>
       <div id="nav-toggle">
