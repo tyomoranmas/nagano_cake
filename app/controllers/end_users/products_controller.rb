@@ -4,14 +4,16 @@ class EndUsers::ProductsController < ApplicationController
 		@genres = Genre.all
 	end
 	def index
+		# ↓一覧件数が全件取得できない
 		@products = Product.all.page(params[:page]).reverse_order.per(8)
+		@products2 = Product.all
 		@genres = Genre.all
 	end
 	def show
 		@cart_item = CartItem.new
 		@product = Product.find(params[:id])
 		@genres = Genre.all
-
+		
 	end
 	private
 	def product_params
