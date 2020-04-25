@@ -4,15 +4,18 @@
 			<h4 class="text-center"><strong>ジャンル検索</strong></h4>
 		</div>
 		<div class ="panel-body">
+		
 			<%@genres.each do |genre|%>
-			<table style=";">
+			<table style="">
 				<tbody>
+				<%if genre.is_disabled == "有効" %>
 					<tr class="list-group">
 						<td class="list-group-item"><strong><%= link_to genre.name,end_users_genre_path(genre.id)%></strong></td>
 					</tr>
+					<% end %>
 				</tbody>
 			</table>
-			<% end %>
+			<%end%>
 		</div>
 	</div>
 </div>
