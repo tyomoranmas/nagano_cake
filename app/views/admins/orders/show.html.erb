@@ -6,21 +6,22 @@
 
  <div class="customer-box">
   <label for="name"> 購入者 </label>
-  <%= link_to admins_end_user_path(@end_user.id) do %>
-   <%= @order.address_name %>
+    <%= link_to admins_end_user_path(@end_user.id) do %>
+    <%= @order.address_name %>
   <% end %><br>
+
   <label for="ship_addresses"> 配送先 </label>
-  〒<%= @order.address %> <br>
+    〒<%= @order.address %> <br>
 
   <label for="payment"> 支払方法 </label>
-  <%= @order.payment %> <br>
-  <%= form_for [:admins, @order] do |f| %>
-<div class="field">
+    <%= @order.payment %> <br>
+    <%= form_for [:admins, @order] do |f| %>
+  <div class="order_status">
     <%= f.label :注文ステータス %>
     <%= f.select :status, Order.statuses.keys %>
   </div>
-    <div class="actions">
-      <%= f.submit "更新", class: 'btn btn-primary col-xs-2' %>
+    <div class="order_status_actions">
+      <%= f.submit "更新", class: 'btn-xs btn-primary col-xs-4' %>
     </div>
   <% end %>
  </div>
@@ -48,12 +49,15 @@
       <% end %>
 
     <td>
-      <%= form_for [:admins, @order_product] do |f| %>
-        <div class="field">
-          <%= f.select :production_status, OrderProduction.production_statuses.key %>
+      <%= form_for [:admins, @order] do |f| %>
+
+      <%= f.fields_for :order_products do |order_product| %>
+        <div class="production_status">
+          <%= order_product.select :production_status, Order.production_statuses.keys %>
         </div>
-        <div class="actions">
-          <%= f.submit "更新", class: 'btn btn-primary col-xs-4' %>
+      <% end %>
+        <div class="production_status_actions">
+          <%= f.submit "更新", class: 'btn-xs btn-primary col-xs-4' %>
         </div>
       <% end %>
     </td>

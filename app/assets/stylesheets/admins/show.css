@@ -19,9 +19,30 @@
 
 .order-box{
 	padding-top: 30px;
-	
 }
 
 .price-box{
 	padding-top: 100%;
+}
+
+.order_status{
+	display: inline-block;
+}
+
+.order_status_actions{
+	display: inline-block;
+	width: 20%;
+}
+
+.production_status{
+	display: inline-block;
+}
+
+.production_status_actions{
+	display: inline-block;
+	width: 50%;
+}
+
+.price-box{
+	margin-top: 70%;
 }
