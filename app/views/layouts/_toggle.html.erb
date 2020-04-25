@@ -1,4 +1,4 @@
-<% if admin_signed_in? or end_user_signed_in? or %w[/ /end_users/sign_up /end_users/sign_in /end_users/products /end_users/product].any? { |name| current_page?("#{name}") }%>
+<% unless %w[/admins/sign_in].any? { |name| current_page?("#{name}") } %>
   <div id="nav-toggle">
     <div>
         <span></span>

@@ -1,5 +1,7 @@
 class Admins::OrdersController < ApplicationController
   before_action :set_current_end_user
+  before_action :authenticate_admin!
+
  def index
   @orders  = Order.all.order(created_at: :asc)
   @orders  = Order.page(params[:page]).per(10)
