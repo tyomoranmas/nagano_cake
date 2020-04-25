@@ -4,9 +4,9 @@
       <h1>注文詳細画面</h1>
     </div>
 
+    <%= form_for [:admins, @order] do |f| %>
     <div class="customer-box">
       <label for="name"> 購入者 </label>
-
       <%= link_to admins_end_user_path(@order) do %>
       <%= @order.address_name %>
       <% end %><br>
@@ -16,7 +16,6 @@
 
       <label for="payment"> 支払方法 </label>
       <%= @order.payment %> <br>
-      <%= form_for [:admins, @order] do |f| %>
       <div class="order_status">
         <%= f.label :注文ステータス %>
         <%= f.select :status, Order.statuses.keys %>
@@ -24,9 +23,7 @@
       <div class="order_status_actions">
         <%= f.submit "更新", class: 'btn-xs btn-primary col-xs-4' %>
       </div>
-      <% end %>
     </div>
-
 
     <div class="order-box">
       <table class='table'>
@@ -42,30 +39,27 @@
         </thead>
 
         <tbody>
-          <% @order_products.each do |item| %>
+          <%= f.fields_for :order_products do |item| %>
           <tr>
-            <td><%= item.product.name %></td>
-            <td><%= item.tax_included_price.to_s(:delimited) %></td>
-            <td><%= item.quantity %></td>
-            <td><%= (item.tax_included_price * item.quantity).to_s(:delimited) %></td>
+            <td><%= item.object.product.name %></td>
+            <td><%= item.object.tax_included_price.to_s(:delimited) %></td>
+            <td><%= item.object.quantity %></td>
+            <td><%= (item.object.tax_included_price * item.object.quantity).to_s(:delimited) %></td>
             <td>
-              <%= form_for [:admins, @order] do |f| %>
 
-                <%= f.fields_for :order_products do |order_product| %>
-                  <div class="production_status">
-                    <%= order_product.select :productions_status, Order.production_statuses.keys %>
-                  </div>
-              <% end %>
-                <div class="production_status_actions">
+              <div class="production_status">
+                <%= item.select :production_status, Order.production_statuses.keys %>
+              </div>
+              <div class="production_status_actions">
                 <%= f.submit "更新", class: 'btn-xs btn-primary col-xs-4' %>
-                </div>
-              <% end %>
+              </div>
             </td>
           </tr>
           <% end %>
         </tbody>
 
       </table>
+      <% end %>
     </div>
   </div>
   <div class="col-xs-2"></div>
@@ -73,11 +67,11 @@
   <div class="col-xs-3">
     <div class="price-box">
       <label for="total"> 商品合計 </label>
-      <%= @order.total %> 円 <br>
+      <%= @order.total.to_s(:delimited) %> 円 <br>
       <label for="postage"> 送料 </label>
       <%= @order.postage %> 円 <br>
       <label for=""> 請求金額合計 </label>
-      <%= @order.total + @order.postage %> 円 <br>
+      <%= (@order.total + @order.postage).to_s(:delimited) %> 円 <br>
     </div>
   </div>
 

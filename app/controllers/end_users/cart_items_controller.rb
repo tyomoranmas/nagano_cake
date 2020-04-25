@@ -40,9 +40,14 @@ class EndUsers::CartItemsController < ApplicationController
 	def create
 		@cart_item = CartItem.new(cart_item_params)
 		@cart_item.end_user_id = current_end_user.id
-		@cart_item.save
-		flash[:success] = "カートに追加しました"
-		redirect_to end_users_cart_items_path
+		if @cart_item.product.is_stopped == "売切れ"
+			flash[:danger] = "申し訳ありません。その商品は売切れです"
+			redirect_back(fallback_location: root_path)
+		else
+			redirect_to end_users_cart_items_path
+			@cart_item.save
+			flash[:success] = "カートに追加しました"
+		end
 	end
 
 	private
