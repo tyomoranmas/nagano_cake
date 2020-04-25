@@ -19,5 +19,5 @@ def index
     get "/end_users/products"
     assert_response :success
     assert_select 'div','paginate'
-  end  
+  end
 end
