@@ -44,9 +44,9 @@ class EndUsers::OrdersController < ApplicationController
         @order_product.save
         item.destroy
       end
-      flash[:success] = "注文情報が登録できました"
       redirect_to end_users_finish_order_path(@order)
     else
+      flash.now[:danger] = "入力情報に間違いがあります"
       render :new
     end
   end

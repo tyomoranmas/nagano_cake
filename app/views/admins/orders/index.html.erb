@@ -28,12 +28,11 @@
             <td>
               <%= order.address_name %>
             </td>
-            <% total_quantity = 0 %>
-            <% order.order_products.each do |item| %>
             <td>
-              <%= total_quantity += item.quantity %>
+              <% total_quantity = 0 %>
+              <% order.order_products.each { |item| total_quantity += item.quantity } %>
+              <%= total_quantity %>
             </td>
-            <% end %>
 
             <td>
               <%= order.status %>
