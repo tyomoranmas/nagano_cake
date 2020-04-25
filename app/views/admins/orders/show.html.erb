@@ -7,7 +7,7 @@
     <div class="customer-box">
       <label for="name"> 購入者 </label>
 
-      <%= link_to admins_order_path(@order) do %>
+      <%= link_to admins_end_user_path(@order) do %>
       <%= @order.address_name %>
       <% end %><br>
 
@@ -51,14 +51,14 @@
             <td>
               <%= form_for [:admins, @order] do |f| %>
 
-              <%= f.fields_for :order_product do |order_product| %>
-              <div class="production_status">
-                <%= order_product.select :production_status, Order.production_statuses.keys %>
-              </div>
+                <%= f.fields_for :order_products do |order_product| %>
+                  <div class="production_status">
+                    <%= order_product.select :productions_status, Order.production_statuses.keys %>
+                  </div>
               <% end %>
-              <div class="production_status_actions">
+                <div class="production_status_actions">
                 <%= f.submit "更新", class: 'btn-xs btn-primary col-xs-4' %>
-              </div>
+                </div>
               <% end %>
             </td>
           </tr>
