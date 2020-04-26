@@ -3,8 +3,13 @@ class EndUsers::OrdersController < ApplicationController
   before_action :set_current_end_user
 
   def new
-    @ship_addresses = @end_user.ship_addresses
-    @order = Order.new
+    if @end_user.cart_items.empty?
+      flash[:danger] = "カートに商品がありません"
+      redirect_to end_users_cart_items_path
+    else
+      @ship_addresses = @end_user.ship_addresses
+      @order = Order.new
+    end
   end
 
   def confirm
