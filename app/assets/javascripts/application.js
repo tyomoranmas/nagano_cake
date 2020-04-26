@@ -17,3 +17,10 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+$(document).on("turbolinks:load", function () {
+  var $header = $("#top-head");
+  // Nav Toggle Button
+  $("#nav-toggle").click(function () {
+    $header.toggleClass("open");
+  });
+});

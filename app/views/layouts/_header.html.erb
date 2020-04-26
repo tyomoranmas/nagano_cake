@@ -3,42 +3,47 @@
     <div id="mobile-head">
       <div class="logo">
         <% if admin_signed_in? %>
-          <%= link_to top_admin_path do %>
-            <%= image_tag 'logo_pink-2.jpg', class: 'logo-img' %>
-          <% end %>
+        <%= link_to top_admin_path do %>
+        <%= image_tag 'logo_pink-2.jpg', class: 'logo-img' %>
+        <% end %>
         <% else %>
-          <%= link_to root_path do %>
-            <%= image_tag 'logo_pink-2.jpg', class: 'logo-img' %>
-          <% end %>
+        <%= link_to root_path do %>
+        <%= image_tag 'logo_pink-2.jpg', class: 'logo-img' %>
+        <% end %>
         <% end %>
       </div>
       <%= render 'layouts/toggle'%>
-    </div><!---mobile-head end -->
+    </div>
+    <!---mobile-head end -->
     <nav id="global-nav" role="navigation">
       <div id="gnav-container">
         <ul id="gnav-ul" class="clearfix">
-          <% if end_user_signed_in? %><!--end_userログイン後表示-->
-            <li><%= link_to 'マイページ', end_user_path, class: "glyphicon glyphicon-user" %></li>
-            <li><%=link_to '商品一覧', end_users_products_path,  class: "glyphicon glyphicon-cutlery" %></li>
-            <li><%=link_to 'カート', end_users_cart_items_path, class: "glyphicon glyphicon-shopping-cart" %></li>
-            <li><%= link_to "ログアウト", destroy_end_user_session_path, class: "glyphicon glyphicon-log-out logout", method: :delete %></li>
-            <p style="color:white; margin-top: 30px;"><%= current_end_user.last_name %>様いらっしゃいませ</p>
-          <% elsif admin_signed_in? %><!--Adminログイン後表示-->
-            <li><%=link_to '商品一覧', admins_products_path %></li>
-            <li><%=link_to '会員一覧', admins_end_users_path %></li>
-            <li><%=link_to '注文履歴一覧', admins_orders_path %></li>
-            <li><%=link_to 'ジャンル管理', admins_genres_path %></li>
-            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-            <form action="" method="get">
-              <input id="sbox1" id="s" name="s" type="text" placeholder="検索 …" /  style="margin-left: 510px; margin-top: 12px;">
-            </form>
-          <% elsif %w[/ /end_users/sign_up /end_users/sign_in /end_users/products /end_users/product].any? { |name| current_page?("#{name}") }  %><!--end_userログイン前表示-->
-            <li><%=link_to '商品一覧', end_users_products_path, class: "glyphicon glyphicon-cutlery" %></li>
-            <li><%=link_to '新規登録', new_end_user_registration_path, class: "glyphicon glyphicon-edit" %></li>
-            <li><%= link_to "ログイン", end_user_session_path, class: "glyphicon glyphicon-log-in sign_in" %></li>
+          <% if end_user_signed_in? %>
+          <!--end_userログイン後表示-->
+          <li><%= link_to 'マイページ', end_user_path, class: "glyphicon glyphicon-user" %></li>
+          <li><%=link_to '商品一覧', end_users_products_path,  class: "glyphicon glyphicon-cutlery" %></li>
+          <li><%=link_to 'カート', end_users_cart_items_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+          <li><%= link_to "ログアウト", destroy_end_user_session_path, class: "glyphicon glyphicon-log-out logout", method: :delete %></li>
+          <p style="color:white; margin-top: 30px;"><%= current_end_user.last_name %>様いらっしゃいませ</p>
+          <% elsif admin_signed_in? %>
+          <!--Adminログイン後表示-->
+          <li><%=link_to '商品一覧', admins_products_path %></li>
+          <li><%=link_to '会員一覧', admins_end_users_path %></li>
+          <li><%=link_to '注文履歴一覧', admins_orders_path %></li>
+          <li><%=link_to 'ジャンル管理', admins_genres_path %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+          <form action="" method="get">
+            <input id="sbox1" id="s" name="s" type="text" placeholder="検索 …" / style="margin-left: 510px; margin-top: 12px;">
+          </form>
+          <% elsif %w[/ /end_users/sign_up /end_users/sign_in /end_users/products /end_users/product].any? { |name| current_page?("#{name}") }  %>
+          <!--end_userログイン前表示-->
+          <li><%=link_to '商品一覧', end_users_products_path, class: "glyphicon glyphicon-cutlery" %></li>
+          <li><%=link_to '新規登録', new_end_user_registration_path, class: "glyphicon glyphicon-edit" %></li>
+          <li><%= link_to "ログイン", end_user_session_path, class: "glyphicon glyphicon-log-in sign_in" %></li>
           <% end %>
         </ul>
       </div>
     </nav>
-  </div><!---inner end------>
+  </div>
+  <!---inner end------>
 </header>
