@@ -4,7 +4,7 @@
 <div class='row'>
   <div class="col-xs-4">
     <div>
-      <%= attachment_image_tag @product, :image, :fill, 350, 230, fallback: "no_image.png", size:'350x230', class: 'form-image' %>
+      <%= attachment_image_tag @product, :image, :fill, fallback: "no_image.png", class: 'form-image img-responsive' %>
     </div>
   </div>
   <div class="col-xs-4 form-group">
