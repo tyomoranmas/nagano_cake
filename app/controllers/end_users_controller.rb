@@ -22,7 +22,7 @@ class EndUsersController < ApplicationController
   def delete
     @end_user.update(is_deleted: true)
     sign_out current_end_user
-    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております"
+    flash[:success] = "ありがとうございました。またのご利用を心よりお待ちしております"
     redirect_to root_path
   end
 
