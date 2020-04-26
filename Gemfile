@@ -72,3 +72,4 @@ gem "kaminari-bootstrap"
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'faker'
+gem 'rails-i18n'
