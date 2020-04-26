@@ -5,8 +5,10 @@
   <div class="add-product pull-right">
     <%= link_to("商品追加", new_admins_product_path, class: "glyphicon glyphicon-plus") %>
   </div>
+  <%= paginate @products, class: "paginate" %>
   <table class="table">
     <thead class="thead-dark">
+
       <tr>
         <th scope="col">商品ID</th>
         <th scope="col">商品名</th>
@@ -17,16 +19,17 @@
     </thead>
     <tbody>
       <% @products.each do |product| %>
-        <% if product.genre.is_disabled == "有効" %>
-          <tr>
-            <td><%= product.id %></td>
-            <td><%= link_to product.name, admins_product_path(product.id) %></td>
-            <td>¥<%= product.tax_excluded_price.to_s(:delimited) %></td>
-            <td><%= product.genre.name %></td>
-            <td><%= product.is_stopped %></td>
-          </tr>
-        <% end %>
+      <% if product.genre.is_disabled == "有効" %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= link_to product.name, admins_product_path(product.id) %></td>
+        <td>¥<%= product.tax_excluded_price.to_s(:delimited) %></td>
+        <td><%= product.genre.name %></td>
+        <td><%= product.is_stopped %></td>
+      </tr>
+      <% end %>
       <% end %>
     </tbody>
   </table>
+  <%= paginate @products, class: "paginate" %>
 </div>
