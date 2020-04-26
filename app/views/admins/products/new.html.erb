@@ -3,7 +3,7 @@
 
   <%= form_for [:admins, @product] do |f| %>
     <div class="col-xs-4">
-      <%= image_tag "no_image.png", :size =>'350x230', class: 'form-image' %>
+      <%= image_tag "no_image.png", class: 'form-image img-responsive' %>
       <%= f.attachment_field :image %>
     </div>
     <div class="col-xs-4 form-group">
