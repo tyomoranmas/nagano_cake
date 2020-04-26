@@ -6,7 +6,7 @@ class EndUsers::ProductsController < ApplicationController
 	def index
 		# ↓一覧件数が全件取得できない
 		@products = Product.all.page(params[:page]).reverse_order.per(8)
-		@products2 = Product.all
+		@products2 = Genre.joins(:products).where(is_disabled: "有効").count
 		@genres = Genre.all
 	end
 	def show
