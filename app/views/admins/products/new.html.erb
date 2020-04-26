@@ -1,39 +1,39 @@
 <div class="row">
   <h1>商品　新規登録画面</h1>
-
+  <%= render 'layouts/error_message', model: @product %>
   <%= form_for [:admins, @product] do |f| %>
-    <div class="col-xs-4">
-      <%= image_tag "no_image.png", size: '230x230', class: 'form-image img-responsive' %>
-      <%= f.attachment_field :image %>
+  <div class="col-xs-4">
+    <%= image_tag "no_image.png", size: '230x230', class: 'form-image img-responsive' %>
+    <%= f.attachment_field :image %>
+  </div>
+  <div class="col-xs-4 form-group">
+    <table class="table">
+      <tr>
+        <td><%= f.label :name, "商品名" %></td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :introduction, "商品説明" %></td>
+        <td><%= f.text_area :introduction %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :genre, "ジャンル" %></td>
+        <td><%= f.select :genre_id, @genres.map{|genre| [genre.name, genre.id]} %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :tax_excluded_price, "税抜価格" %></td>
+        <td><%= f.text_field :tax_excluded_price %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :is_stopped, "販売ステータス" %></td>
+        <td><%= f.select :is_stopped, Product.is_stoppeds.keys %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-xs-4">
+    <div class="form-submit">
+      <%= f.submit('新規登録', class: 'btn btn-primary') %>
     </div>
-    <div class="col-xs-4 form-group">
-      <table class="table">
-        <tr>
-          <td><%= f.label :name, "商品名" %></td>
-          <td><%= f.text_field :name %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :introduction, "商品説明" %></td>
-          <td><%= f.text_area :introduction %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :genre, "ジャンル" %></td>
-          <td><%= f.select :genre_id, @genres.map{|genre| [genre.name, genre.id]} %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :tax_excluded_price, "税抜価格" %></td>
-          <td><%= f.text_field :tax_excluded_price %></td>
-        </tr>
-        <tr>
-          <td><%= f.label :is_stopped, "販売ステータス" %></td>
-          <td><%= f.select :is_stopped, Product.is_stoppeds.keys %></td>
-        </tr>
-      </table>
-    </div>
-    <div class="col-xs-4">
-      <div class="form-submit">
-        <%= f.submit('新規登録', class: 'btn btn-primary') %>
-      </div>
-    </div>
+  </div>
   <% end %>
 </div>
