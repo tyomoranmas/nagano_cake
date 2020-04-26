@@ -20,9 +20,15 @@ class Admins::ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    product.save!
-    redirect_to admins_product_path(product.id)
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to admins_product_path(product.id)
+    else
+      @product = Product.new
+      @genres = Genre.all
+      flash[:notice] = "商品名と価格は必ず入力してください"
+      render :new
+    end
   end
 
   def update

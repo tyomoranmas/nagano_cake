@@ -4,7 +4,7 @@
 <div class="row">
   <%= form_for [:admins, @product] do |f| %>
     <div class="col-xs-4">
-      <%= attachment_image_tag @product, :image, :fill, fallback: "no_image.png", class: 'form-image img-responsive' %>
+      <%= attachment_image_tag @product, :image, :fill, 350, 230, fallback: "no_image.png", class: 'form-image img-responsive' %>
       <%= f.attachment_field :image %>
     </div>
     <div class="col-xs-4 form-group">
@@ -23,7 +23,7 @@
         </tr>
         <tr>
           <td><%= f.label :tax_excluded_price, "税抜価格" %></td>
-          <td><%= f.text_field :tax_excluded_price %></td>
+          <td><%= f.text_field :tax_excluded_price %>円</td>
         </tr>
         <tr>
           <td><%= f.label :is_stopped, "販売ステータス" %></td>
