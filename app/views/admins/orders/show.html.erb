@@ -7,7 +7,7 @@
     <div class="customer-box">
       <%= form_for [:admins, @order] do |f| %>
       <label for="name"> 購入者 </label>
-      <%= link_to admins_end_user_path(@order) do %>
+      <%= link_to admins_end_user_path(@order.end_user) do %>
       <%= @order.address_name %>
       <% end %><br>
 

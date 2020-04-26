@@ -4,7 +4,6 @@ class EndUsers::OrdersController < ApplicationController
 
   def new
     if @end_user.cart_items.empty?
-      flash[:danger] = "カートに商品がありません"
       redirect_to end_users_cart_items_path
     else
       @ship_addresses = @end_user.ship_addresses
@@ -61,11 +60,15 @@ class EndUsers::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
-    unless @order.end_user == @end_user
-      redirect_to end_users_orders_path
+    if @order
+      @order = Order.find(params[:id])
+      unless @order.end_user == @end_user
+        redirect_to end_users_orders_path
+      end
+      @order_products = @order.order_products
+    else
+      redirect_to end_users_cart_items_path
     end
-    @order_products = @order.order_products
   end
 
 

@@ -16,6 +16,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.alert-notice {
+  color: #000;
+  background: #cdcdcd;
+}
+
 .pagination {
   margin: 0 0;
 }
