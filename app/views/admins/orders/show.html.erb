@@ -4,8 +4,8 @@
       <h1>注文詳細画面</h1>
     </div>
 
-    <%= form_for [:admins, @order] do |f| %>
     <div class="customer-box">
+      <%= form_for [:admins, @order] do |f| %>
       <label for="name"> 購入者 </label>
       <%= link_to admins_end_user_path(@order) do %>
       <%= @order.address_name %>
@@ -23,6 +23,8 @@
       <div class="order_status_actions">
         <%= f.submit "更新", class: 'btn-xs btn-primary col-xs-4' %>
       </div>
+      <% end %>
+
     </div>
 
     <div class="order-box">
@@ -39,6 +41,7 @@
         </thead>
 
         <tbody>
+          <%= form_for [:admins, @order] do |f| %>
           <%= f.fields_for :order_products do |item| %>
           <tr>
             <td><%= item.object.product.name %></td>
@@ -56,10 +59,10 @@
             </td>
           </tr>
           <% end %>
+          <% end %>
         </tbody>
 
       </table>
-      <% end %>
     </div>
   </div>
   <div class="col-xs-2"></div>
@@ -74,5 +77,4 @@
       <%= (@order.total + @order.postage).to_s(:delimited) %> 円 <br>
     </div>
   </div>
-
 </div>
