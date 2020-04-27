@@ -87,17 +87,20 @@ h2 {
   .name {
     padding-right: 150px;
   }
+  .blank_name {
+    padding: 0 150px 8px 0;
+  }
   .last_name {
     padding-right: 22px;
   }
   .first_name {
-    padding: 0 15px 0 30px;
+    padding-right: 22px;
   }
   .last_name_kana {
     padding-right: 8px;
   }
   .first_name_kana {
-    padding: 0 2px 0 30px;
+    padding-right: 8px;
   }
   .email {
     padding-right: 130px;
@@ -130,6 +133,10 @@ h2 {
 //エラーによるレイアウトが崩れるのを防ぐ
 .field_with_errors {
   display: contents;
+}
+
+#error_explanation {
+  color: #ff0000;
 }
 
 .table {
