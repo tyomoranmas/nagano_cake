@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
       when EndUser
         if resource.is_deleted == "退会済み"
           sign_out resource
+          flash[:notice] = "退会済みのユーザーです"
           root_path
         else
           root_path(resource)
