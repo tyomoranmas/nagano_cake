@@ -1,15 +1,9 @@
 require 'test_helper'
 
 class EndUsers::ProductsControllerTest < ActionDispatch::IntegrationTest
-def top
-		@products = Product.all.limit(4)
-		@genres = Genre.all
-	end
-def index
-		@products = Product.page(params[:page]).reverse_order.per(8)
-		@products2 = Product.all
-		@genres = Genre.all
-	end
+  def setup
+    @product = products(:cake)
+  end
  test "should get top" do
     get "/"
     assert_response :success
@@ -18,6 +12,9 @@ def index
  test "should get index" do
     get "/end_users/products"
     assert_response :success
-    assert_select 'div','paginate'
+  end
+ test "should get show" do
+    get "/end_users/products/#{@products}"
+    assert_response :success
   end
 end
