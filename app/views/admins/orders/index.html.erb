@@ -1,39 +1,47 @@
-<div class="container">
 <div class="row">
-	<div class="col-xs-9">
-		<div class="orders-title">
-			<h1>注文一覧画面</h1>
-		</div>
-		<div class="orders-box">
-			<%= will_paginate %>
-			<table class='table'>
+    <div class="orders-title">
+      <h1>注文一覧画面</h1>
+    </div>
+    <div class="orders-box">
+      <%= paginate @orders %>
 
-				<thead>
-					<tr class="active">
-						<th>購入日時</th>
-						<th>購入者</th>
-						<th>注文個数</th>
-						<th>注文ステータス</th>
-					</tr>
-				</thead>
+      <table class='table'>
 
-				<tbody>
-					<% @orders.each do |order| %>
-						<tr>
-							<td><%= link_to order.id, admin_oder_path(end_user.id) %></td>
-							<td><%= order.name %></td>
-							<td><%= oder.status.coun %></td>
-							<td><%= order.status %></td>
-						</tr>
-					<% end %>
-				</tbody>
-			</table>
-			<%= will_paginate %>
-		</div>
+        <thead>
+          <tr class="active">
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
 
-	</div>
-	<div class="col-xs-3"></div>
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <%= link_to admins_order_path(order) do %>
+              <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+              <% end %>
+            </td>
 
+            <td>
+              <%= order.address_name %>
+            </td>
+            <td>
+              <% total_quantity = 0 %>
+              <% order.order_products.each { |item| total_quantity += item.quantity } %>
+              <%= total_quantity %>
+            </td>
+
+            <td>
+              <%= order.status %>
+            </td>
+
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @orders %>
+    </div>
 </div>
-</div>
-

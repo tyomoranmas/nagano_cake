@@ -10,6 +10,7 @@ class EndUsers::ShipAddressesController < ApplicationController
     @ship_address = ShipAddress.new(ship_address_params)
     @ship_address.end_user_id = @end_user.id
     if @ship_address.save
+      flash[:success] = "配送先を登録しました"
       redirect_to end_users_ship_addresses_path
     else
       @ship_addresses = @end_user.ship_addresses
@@ -24,7 +25,8 @@ class EndUsers::ShipAddressesController < ApplicationController
   def update
     @ship_address = ShipAddress.find(params[:id])
     if @ship_address.update(ship_address_params)
-      redirect_to end_users_ship_addresses_path, success: "配送先を更新しました"
+      flash[:success] = "配送先を更新しました"
+      redirect_to end_users_ship_addresses_path
     else
       render :edit
     end
@@ -33,7 +35,8 @@ class EndUsers::ShipAddressesController < ApplicationController
   def destroy
     @ship_address = ShipAddress.find(params[:id])
     @ship_address.destroy
-    redirect_to end_users_ship_addresses_path, success: "配送先を削除しました"
+    flash[:success] = "配送先を削除しました"
+    redirect_to end_users_ship_addresses_path
   end
 
   private

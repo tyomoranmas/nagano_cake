@@ -14,5 +14,5 @@
 
 <div class="row leave-link">
   <%= link_to "退会しない", end_user_path(@end_user), class: "btn btn-primary" %>
-  <%= link_to "退会する", delete_end_user_path(@end_user), method: :patch, data: { confirm: "本当に退会しますか？" }, class: "btn btn-danger leave-btn" %>
+  <%= link_to "退会する", delete_end_user_path(@end_user), method: :patch, class: "btn btn-danger leave-btn" %>
 </div>

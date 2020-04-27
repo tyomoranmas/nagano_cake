@@ -6,12 +6,12 @@
   <%= render 'end_users/shared/address_form', f: f %>
 
   <div class="field">
-    <%= f.label :宛名, class: "ship_address" %>
+    <%= f.label :宛名, class: "address_name" %>
     <%= f.text_field :address_name, autofocus: true, autocomplete: "address_name" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "編集する", class: "btn btn-primary col-xs-2 col-xs-offset-5", style: "margin-bottom: 20px;" %>
+    <%= f.submit "編集する", class: "btn btn-primary col-xs-offset-5", style: "margin-bottom: 20px;" %>
   </div>
   <% end %>
 </div>
