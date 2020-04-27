@@ -22,7 +22,7 @@ class Admins::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to admins_product_path(@product.id)
+      redirect_to admins_products_path
     else
       @genres = Genre.all
       render :new
