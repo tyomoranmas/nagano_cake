@@ -1,0 +1,13 @@
+cake:
+  id: 1
+  name: Ichigo
+  introduction: umai
+  genre_id: 1
+  tax_excluded_price: 500
+
+taro:
+
+cart:
+  product_id: 1
+  end_user_id: 1
+  quantity: 2

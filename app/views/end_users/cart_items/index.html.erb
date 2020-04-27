@@ -29,8 +29,8 @@
 	<%@cart_items.each do |item|%>
 		<tbody>
 			<tr>
-				<td><%= attachment_image_tag(item.product, :image,:fill, 100,100, fallback:"no_image.png", style: "width:25%;height: 40px;")%>
-				<%=item.product.name%></td>
+				<td><%= attachment_image_tag(item.product, :image,:fill, 100,100, fallback:"no_image.png", style: "width:45px;height: 40px;")%>
+				<%=item.product.name%></div></td>
 				<td style="text-align: center;">¥<%= (item.product.tax_excluded_price * 1.10).floor.to_s(:delimited)%></td>
 				<%=form_for [:end_users, item] do |f|%>
 					<td>
