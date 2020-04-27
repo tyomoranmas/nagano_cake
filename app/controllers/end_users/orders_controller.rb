@@ -60,15 +60,11 @@ class EndUsers::OrdersController < ApplicationController
   end
 
   def show
-    if @order
-      @order = Order.find(params[:id])
-      unless @order.end_user == @end_user
-        redirect_to end_users_orders_path
-      end
-      @order_products = @order.order_products
-    else
+    @order = Order.find(params[:id])
+    unless @order.end_user == @end_user
       redirect_to end_users_cart_items_path
     end
+    @order_products = @order.order_products
   end
 
 

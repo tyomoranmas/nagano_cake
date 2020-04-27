@@ -1,9 +1,9 @@
-<% unless %w[/admins/sign_in].any? { |name| current_page?("#{name}") } %>
-  <div id="nav-toggle">
-    <div>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+<% unless current_page?('/admins/sign_in') %>
+<div id="nav-toggle">
+  <div>
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
+</div>
 <% end %>

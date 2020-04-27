@@ -1,18 +1,20 @@
 <div class="row">
-  <div class="col-xs-7">
-    <div class="order-title">
-      <h1>注文詳細画面</h1>
-    </div>
+  <div class="order-title">
+    <h1>注文詳細画面</h1>
+  </div>
 
+  <div class="col-xs-9">
     <div class="customer-box">
       <%= form_for [:admins, @order] do |f| %>
       <label for="name"> 購入者 </label>
       <%= link_to admins_end_user_path(@order.end_user) do %>
-      <%= @order.address_name %>
+      <%= @order.end_user.last_name %><%= @order.end_user.first_name %>
       <% end %><br>
 
       <label for="ship_addresses"> 配送先 </label>
-      〒<%= @order.address %> <br>
+      〒 <%= @order.post_code %>
+      <%= @order.address %>
+      <%= @order.address_name %><br>
 
       <label for="payment"> 支払方法 </label>
       <%= @order.payment %> <br>
@@ -21,7 +23,7 @@
         <%= f.select :status, Order.statuses.keys %>
       </div>
       <div class="order_status_actions">
-        <%= f.submit "更新", class: 'btn-xs btn-primary col-xs-4' %>
+        <%= f.submit "更新", class: 'btn-xs btn-primary' %>
       </div>
       <% end %>
 
@@ -54,7 +56,7 @@
                 <%= item.select :production_status, Order.production_statuses.keys %>
               </div>
               <div class="production_status_actions">
-                <%= f.submit "更新", class: 'btn-xs btn-primary col-xs-4' %>
+                <%= f.submit "更新", class: 'btn-xs btn-primary' %>
               </div>
             </td>
           </tr>
@@ -65,7 +67,6 @@
       </table>
     </div>
   </div>
-  <div class="col-xs-2"></div>
 
   <div class="col-xs-3">
     <div class="price-box">
