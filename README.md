@@ -19,8 +19,10 @@
   <dd>カート機能</dd>
   <dd>会員本人による会員情報の閲覧、編集、注文履歴の閲覧、配送先の閲覧、編集機能</dd>
 </dl> 
+
 ### Ruby version
-ruby-2.5.7
+* ruby-2.5.7
+
 ### Configuration
 <dl>
   <dt>フロントエンド</dt>
