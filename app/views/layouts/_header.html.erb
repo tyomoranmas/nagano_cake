@@ -35,7 +35,7 @@
           <form action="" method="get">
             <input id="sbox1" id="s" name="s" type="text" placeholder="検索 …" / style="margin-left: 510px; margin-top: 12px;">
           </form>
-          <% elsif current_page?('admins/sign_in') %>
+          <% elsif current_page?('/admins/sign_in') %>
           <% else %>
           <!--end_userログイン前表示-->
           <li><%=link_to '商品一覧', end_users_products_path, class: "glyphicon glyphicon-cutlery" %></li>
