@@ -1,5 +1,5 @@
-# 長野ケーキ!
-[logo_pink-2](https://user-images.githubusercontent.com/60866177/80472916-5ef2a180-8980-11ea-85e9-71de75cb6b7b.jpg)
+# 長野ケーキ
+![logo_pink-2](https://user-images.githubusercontent.com/60866177/80472916-5ef2a180-8980-11ea-85e9-71de75cb6b7b.jpg)
 * ご覧頂きありがとうございます。
 * こちらはケーキ屋さんをイメージしたECサイト「NAGANO CAKE」です。
 * ログインしていなくても商品の閲覧が可能です。
